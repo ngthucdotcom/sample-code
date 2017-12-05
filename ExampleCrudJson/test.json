@@ -1,0 +1,18 @@
+{
+  "playlist": [{
+    "title": "Test title1222212321321321",
+    "title_bg": "link\/to\/image.png",
+    "link": "https:\/\/www.google.com",
+    "description": "This is a test JSON Object"
+  }, {
+    "title": "This is a title ",
+    "title_bg": "This is a title bg",
+    "link": "This is a link2",
+    "description": "This is a description"
+  }, {
+    "title": "This is example",
+    "title_bg": "img\/background.png",
+    "link": "http:\/\/localhost\/tkb\/example_crud_json\/",
+    "description": "Example is not Current"
+  }]
+}
