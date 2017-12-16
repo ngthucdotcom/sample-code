@@ -1,4 +1,4 @@
-<form action="http://localhost/tkb/example_crud_json/add.php" method="POST">
+<form action="http://localhost/samplecode/ExampleCrudJson/add.php" method="POST">
     <input type="text" name="title" placeholder="title"/>
     <input type="text" name="title_bg" placeholder="title_bg"/>
     <input type="text" name="link" placeholder="link"/>
@@ -13,6 +13,6 @@ if (isset($_POST["add"])) {
     $data["playlist"] = array_values($data["playlist"]);
     array_push($data["playlist"], $_POST);
     file_put_contents("test.json", json_encode($data));
-    header("Location: http://localhost/tkb/example_crud_json/index.php");
+    header("Location: http://localhost/samplecode/ExampleCrudJson/index.php");
 }
 ?>

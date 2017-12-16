@@ -27,11 +27,11 @@ if (isset($_POST["id"])) {
         $all["playlist"] = array_values($all["playlist"]);
         file_put_contents("test.json", json_encode($all));
     }
-    header("Location: http://localhost/tkb/example_crud_json/index.php");
+    header("Location: http://localhost/samplecode/ExampleCrudJson/index.php");
 }
 ?>
 <?php if (isset($_GET["id"])): ?>
-    <form action="http://localhost/tkb/example_crud_json/edit.php" method="POST">
+    <form action="http://localhost/samplecode/ExampleCrudJson/edit.php" method="POST">
         <input type="hidden" value="<?php echo $id ?>" name="id"/>
         <input type="text" value="<?php echo $jsonfile["title"] ?>" name="title"/>
         <input type="text" value="<?php echo $jsonfile["title_bg"] ?>" name="title_bg"/>

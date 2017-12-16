@@ -12,5 +12,5 @@ if (isset($_GET["id"])) {
         $all["playlist"] = array_values($all["playlist"]);
         file_put_contents("test.json", json_encode($all));
     }
-    header("Location: http://localhost/tkb/example_crud_json/index.php");
+    header("Location: http://localhost/samplecode/ExampleCrudJson/index.php");
 }
