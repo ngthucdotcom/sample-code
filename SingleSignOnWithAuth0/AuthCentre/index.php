@@ -29,14 +29,14 @@
             <div class="login-page clearfix">
               <?php if(!$_SESSION['userinfo']): ?>
               <div class="login-box auth0-box before">
-                <img src="url" alt="Logo Auth Site"/>
+                <img src="URL" alt="Logo Auth Site"/>
                 <h3>Authentication App</h3>
                 <!-- <p>Zero friction identity infrastructure, built for developers</p> -->
                 <a id="qsLoginBtn" class="btn btn-primary btn-lg btn-login btn-block" href="login.php">Sign In</a>
               </div>
               <?php else: ?>
               <div class="logged-in-box auth0-box logged-in">
-                <h1 id="logo"><img src="url" alt="Logo Auth Site"/></h1>
+                <h1 id="logo"><img src="URL" alt="Logo Auth Site"/></h1>
                 <img class="avatar" src="<?php echo $_SESSION['userinfo']['picture'] ?>" style="width:200px; border-radius:20px" />
                 <h3>Hello, <span class="nickname"><?php echo $_SESSION['userinfo']['name'] ?></span>!</h3>
                 <h4>Email: <span class="nickname"><?php echo $_SESSION['userinfo']['email'] ?></span></h4>
