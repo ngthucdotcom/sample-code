@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
+-- version 4.4.15.9
+-- https://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 04, 2015 at 05:47 AM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Host: localhost
+-- Generation Time: Aug 14, 2018 at 01:37 PM
+-- Server version: 5.6.37
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `iziweb_cms`
@@ -27,12 +27,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `izi_attribute` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
   `default_value` varchar(255) NOT NULL,
-  `attr_group_id` int(11) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+  `attr_group_id` int(11) unsigned NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `izi_attribute`
@@ -58,10 +57,9 @@ INSERT INTO `izi_attribute` (`id`, `name`, `default_value`, `attr_group_id`) VAL
 --
 
 CREATE TABLE IF NOT EXISTS `izi_attr_group` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+  `id` int(10) unsigned NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `izi_attr_group`
@@ -80,7 +78,7 @@ INSERT INTO `izi_attr_group` (`id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `izi_category` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
   `show_in_menu` tinyint(1) NOT NULL DEFAULT '1',
@@ -89,10 +87,8 @@ CREATE TABLE IF NOT EXISTS `izi_category` (
   `tag_title` varchar(255) NOT NULL,
   `tag_description` text NOT NULL,
   `tag_keywords` text NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `parent_id` (`parent_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+  `status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `izi_category`
@@ -112,16 +108,15 @@ INSERT INTO `izi_category` (`id`, `name`, `slug`, `show_in_menu`, `sort_order`, 
 --
 
 CREATE TABLE IF NOT EXISTS `izi_comment` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
   `comment_time` datetime NOT NULL,
   `username` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `content` text,
   `status` tinyint(4) NOT NULL DEFAULT '1',
-  `product_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `product_id` int(10) unsigned NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `izi_comment`
@@ -138,11 +133,10 @@ INSERT INTO `izi_comment` (`id`, `comment_time`, `username`, `email`, `phone`, `
 --
 
 CREATE TABLE IF NOT EXISTS `izi_config` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
   `key` varchar(255) DEFAULT NULL,
-  `value` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `value` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -151,16 +145,15 @@ CREATE TABLE IF NOT EXISTS `izi_config` (
 --
 
 CREATE TABLE IF NOT EXISTS `izi_customer` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
   `username` varchar(64) NOT NULL DEFAULT '',
   `password` varchar(64) NOT NULL DEFAULT '',
   `full_name` varchar(255) NOT NULL DEFAULT '',
   `email` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+  `status` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `izi_customer`
@@ -179,15 +172,14 @@ INSERT INTO `izi_customer` (`id`, `username`, `password`, `full_name`, `email`, 
 --
 
 CREATE TABLE IF NOT EXISTS `izi_menu` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
   `sort_order` tinyint(4) NOT NULL DEFAULT '0',
   `title` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   `object_id` int(10) unsigned NOT NULL,
   `link` varchar(255) DEFAULT NULL,
-  `parent_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `parent_id` int(10) unsigned NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -196,11 +188,10 @@ CREATE TABLE IF NOT EXISTS `izi_menu` (
 --
 
 CREATE TABLE IF NOT EXISTS `izi_online` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
   `session` varchar(255) DEFAULT NULL,
-  `on_time` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `on_time` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -209,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `izi_online` (
 --
 
 CREATE TABLE IF NOT EXISTS `izi_order` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
   `order_time` datetime NOT NULL,
   `amount` decimal(15,0) NOT NULL DEFAULT '0',
   `customer_id` int(11) unsigned NOT NULL DEFAULT '0',
@@ -218,9 +209,8 @@ CREATE TABLE IF NOT EXISTS `izi_order` (
   `phone` varchar(20) NOT NULL,
   `address` varchar(255) NOT NULL,
   `order_info` text NOT NULL,
-  `status` smallint(6) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+  `status` smallint(6) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `izi_order`
@@ -238,7 +228,7 @@ INSERT INTO `izi_order` (`id`, `order_time`, `amount`, `customer_id`, `full_name
 --
 
 CREATE TABLE IF NOT EXISTS `izi_post` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
   `title` text,
   `post_date` date DEFAULT NULL,
   `author` varchar(255) DEFAULT NULL,
@@ -252,23 +242,22 @@ CREATE TABLE IF NOT EXISTS `izi_post` (
   `tag_description` varchar(255) DEFAULT NULL,
   `tag_keywords` varchar(255) DEFAULT NULL,
   `status` tinyint(4) DEFAULT '1',
-  `topic_id` int(10) unsigned DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+  `topic_id` int(10) unsigned DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `izi_post`
 --
 
 INSERT INTO `izi_post` (`id`, `title`, `post_date`, `author`, `thumbnail`, `excerpt`, `content`, `tags`, `post_type`, `views`, `tag_title`, `tag_description`, `tag_keywords`, `status`, `topic_id`) VALUES
-(1, 'Giới thiệu chúng tôi', '2015-02-02', NULL, '/iziweb_cms/assets/plugin/kcfinder/upload/images/4.jpg', 'Giới thiệu trung tâm', '<p>Nội dung b&agrave;i giới thiệu</p>\r\n', NULL, 'page', 0, '', NULL, '', 1, 1),
+(1, 'Giới thiệu chúng tôi', '2015-02-02', NULL, '/SampleCode/CMS/assets/plugin/kcfinder/upload/images/4.jpg', 'Giới thiệu trung tâm', '<p>Nội dung b&agrave;i giới thiệu</p>\r\n', NULL, 'page', 0, '', NULL, '', 1, 1),
 (2, 'Liên hệ', '2015-02-09', '', '', 'Tóm tắt phần liên hệ', '<p>Nội dung phần li&ecirc;n hệ</p>\r\n', 'lien hej,le hien', 'page', 0, '', NULL, '', 1, 2),
 (3, 'fdfdfdf', '0000-00-00', NULL, '', '', '', NULL, 'page', 0, '', NULL, '', 1, 2),
 (4, 'Tin tuc ngay hom nay', '2015-02-03', NULL, NULL, 'xxx', 'yyy', NULL, 'post', 0, NULL, NULL, NULL, 1, 1),
-(5, 'Bí quyết bán hàng dịp tết', '2015-02-19', 'Tác giả', '/iziweb_cms/assets/plugin/kcfinder/upload/images/24723_0_vostro_5470.jpg', 'Tóm tắt nội dung', '<p>Nội dung chi tiết abc&nbsp;Nội dung chi tiế<strong>t abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi ti</strong>ết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc</p>\r\n', NULL, 'post', 0, '', NULL, '', 1, 1),
+(5, 'Bí quyết bán hàng dịp tết', '2015-02-19', 'Tác giả', '/SampleCode/CMS/assets/plugin/kcfinder/upload/images/24723_0_vostro_5470.jpg', 'Tóm tắt nội dung', '<p>Nội dung chi tiết abc&nbsp;Nội dung chi tiế<strong>t abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi ti</strong>ết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc</p>\r\n', NULL, 'post', 0, '', NULL, '', 1, 1),
 (6, 'fdfdf', '0000-00-00', '', '', '', '', 'tafd, fdfdfdfdo dfdf,fdfdfdf dfdfdfl', 'post', 1, '', NULL, '', 1, 1),
-(7, 'Bài thơ hay nhất thời đại', '2015-03-04', 'Hà Thanh', '/iziweb_cms/assets/plugin/kcfinder/upload/images/Q-0b0e5.jpg', '<p><strong>Anh c&oacute; v&ocirc; v&agrave;n niềm vui v&agrave; em chẳng thể tin...</strong><br />\r\nAnh nhớ em v&igrave; t&igrave;nh y&ecirc;u hay gần tựa', '<p><strong>Anh c&oacute; v&ocirc; v&agrave;n niềm vui v&agrave; em chẳng thể tin...</strong><br />\r\nAnh nhớ em v&igrave; t&igrave;nh y&ecirc;u hay gần tựa như thế<br />\r\nEm cũng chẳng ghen đ&acirc;u...<br />\r\nV&igrave; v&agrave;i lời người dưng kể<br />\r\nChỉ tho&aacute;ng buồn cho m&igrave;nh... V&agrave; cả anh!</p>\r\n\r\n<p><strong>Em chẳng sai - khi em đ&atilde; tin anh</strong><br />\r\nV&agrave; cố chấp nghĩ anh dễ thay đổi<br />\r\nNhưng em l&agrave; bến đỗ b&igrave;nh y&ecirc;n khi mệt anh gh&eacute; tới...<br />\r\nV&agrave; lại đi khi niềm vui kh&aacute;c gọi mời...</p>\r\n\r\n<p><strong>Em nghĩ rằng nước mắt sẽ chẳng rơi</strong><br />\r\nKhi mỗi ng&agrave;y cứ chờ mong tr&ocirc;ng ng&oacute;ng<br />\r\nN&agrave;o đ&acirc;u em c&oacute; vẽ cho m&igrave;nh ch&uacute;t hy vọng<br />\r\nChỉ v&igrave; một điều... L&agrave; em vẫn y&ecirc;u anh!</p>\r\n\r\n<p><strong>Chỉ tiếc l&agrave; niềm tin qu&aacute; mỏng manh</strong><br />\r\nEm chỉ l&agrave; một sợi tơ trong v&ocirc; v&agrave;n qu&ecirc;n nhớ<br />\r\nỞ nơi anh! Em đ&atilde; qu&ecirc;n mất m&igrave;nh c&ograve;n thở...<br />\r\nV&agrave; t&igrave;nh y&ecirc;u ơi! Nếu như c&ograve;n c&oacute; thể...<br />\r\nAnh c&oacute; thể...<br />\r\nĐi xa em hơn nữa? C&oacute; được kh&ocirc;ng?</p>\r\n', 'bai tho,tho hay,tinh yeu', 'post', 1, '', NULL, '', 1, 2),
-(8, 'Bài thơ hay nhất thời đại', '2015-03-04', 'Hà Thanh', '/iziweb_cms/assets/plugin/kcfinder/upload/images/Q-0b0e5.jpg', '<p><strong>Anh c&oacute; v&ocirc; v&agrave;n niềm vui v&agrave; em chẳng thể tin...</strong><br />\r\nAnh nhớ em v&igrave; t&igrave;nh y&ecirc;u hay gần tựa', '<p><strong>Anh c&oacute; v&ocirc; v&agrave;n niềm vui v&agrave; em chẳng thể tin...</strong><br />\r\nAnh nhớ em v&igrave; t&igrave;nh y&ecirc;u hay gần tựa như thế<br />\r\nEm cũng chẳng ghen đ&acirc;u...<br />\r\nV&igrave; v&agrave;i lời người dưng kể<br />\r\nChỉ tho&aacute;ng buồn cho m&igrave;nh... V&agrave; cả anh!</p>\r\n\r\n<p><strong>Em chẳng sai - khi em đ&atilde; tin anh</strong><br />\r\nV&agrave; cố chấp nghĩ anh dễ thay đổi<br />\r\nNhưng em l&agrave; bến đỗ b&igrave;nh y&ecirc;n khi mệt anh gh&eacute; tới...<br />\r\nV&agrave; lại đi khi niềm vui kh&aacute;c gọi mời...</p>\r\n\r\n<p><strong>Em nghĩ rằng nước mắt sẽ chẳng rơi</strong><br />\r\nKhi mỗi ng&agrave;y cứ chờ mong tr&ocirc;ng ng&oacute;ng<br />\r\nN&agrave;o đ&acirc;u em c&oacute; vẽ cho m&igrave;nh ch&uacute;t hy vọng<br />\r\nChỉ v&igrave; một điều... L&agrave; em vẫn y&ecirc;u anh!</p>\r\n\r\n<p><strong>Chỉ tiếc l&agrave; niềm tin qu&aacute; mỏng manh</strong><br />\r\nEm chỉ l&agrave; một sợi tơ trong v&ocirc; v&agrave;n qu&ecirc;n nhớ<br />\r\nỞ nơi anh! Em đ&atilde; qu&ecirc;n mất m&igrave;nh c&ograve;n thở...<br />\r\nV&agrave; t&igrave;nh y&ecirc;u ơi! Nếu như c&ograve;n c&oacute; thể...<br />\r\nAnh c&oacute; thể...<br />\r\nĐi xa em hơn nữa? C&oacute; được kh&ocirc;ng?</p>\r\n', 'bai tho,tho hay,tinh yeu', 'post', 1, '', NULL, '', 1, 2),
+(7, 'Bài thơ hay nhất thời đại', '2015-03-04', 'Hà Thanh', '/SampleCode/CMS/assets/plugin/kcfinder/upload/images/Q-0b0e5.jpg', '<p><strong>Anh c&oacute; v&ocirc; v&agrave;n niềm vui v&agrave; em chẳng thể tin...</strong><br />\r\nAnh nhớ em v&igrave; t&igrave;nh y&ecirc;u hay gần tựa', '<p><strong>Anh c&oacute; v&ocirc; v&agrave;n niềm vui v&agrave; em chẳng thể tin...</strong><br />\r\nAnh nhớ em v&igrave; t&igrave;nh y&ecirc;u hay gần tựa như thế<br />\r\nEm cũng chẳng ghen đ&acirc;u...<br />\r\nV&igrave; v&agrave;i lời người dưng kể<br />\r\nChỉ tho&aacute;ng buồn cho m&igrave;nh... V&agrave; cả anh!</p>\r\n\r\n<p><strong>Em chẳng sai - khi em đ&atilde; tin anh</strong><br />\r\nV&agrave; cố chấp nghĩ anh dễ thay đổi<br />\r\nNhưng em l&agrave; bến đỗ b&igrave;nh y&ecirc;n khi mệt anh gh&eacute; tới...<br />\r\nV&agrave; lại đi khi niềm vui kh&aacute;c gọi mời...</p>\r\n\r\n<p><strong>Em nghĩ rằng nước mắt sẽ chẳng rơi</strong><br />\r\nKhi mỗi ng&agrave;y cứ chờ mong tr&ocirc;ng ng&oacute;ng<br />\r\nN&agrave;o đ&acirc;u em c&oacute; vẽ cho m&igrave;nh ch&uacute;t hy vọng<br />\r\nChỉ v&igrave; một điều... L&agrave; em vẫn y&ecirc;u anh!</p>\r\n\r\n<p><strong>Chỉ tiếc l&agrave; niềm tin qu&aacute; mỏng manh</strong><br />\r\nEm chỉ l&agrave; một sợi tơ trong v&ocirc; v&agrave;n qu&ecirc;n nhớ<br />\r\nỞ nơi anh! Em đ&atilde; qu&ecirc;n mất m&igrave;nh c&ograve;n thở...<br />\r\nV&agrave; t&igrave;nh y&ecirc;u ơi! Nếu như c&ograve;n c&oacute; thể...<br />\r\nAnh c&oacute; thể...<br />\r\nĐi xa em hơn nữa? C&oacute; được kh&ocirc;ng?</p>\r\n', 'bai tho,tho hay,tinh yeu', 'post', 1, '', NULL, '', 1, 2),
+(8, 'Bài thơ hay nhất thời đại', '2015-03-04', 'Hà Thanh', '/SampleCode/CMS/assets/plugin/kcfinder/upload/images/Q-0b0e5.jpg', '<p><strong>Anh c&oacute; v&ocirc; v&agrave;n niềm vui v&agrave; em chẳng thể tin...</strong><br />\r\nAnh nhớ em v&igrave; t&igrave;nh y&ecirc;u hay gần tựa', '<p><strong>Anh c&oacute; v&ocirc; v&agrave;n niềm vui v&agrave; em chẳng thể tin...</strong><br />\r\nAnh nhớ em v&igrave; t&igrave;nh y&ecirc;u hay gần tựa như thế<br />\r\nEm cũng chẳng ghen đ&acirc;u...<br />\r\nV&igrave; v&agrave;i lời người dưng kể<br />\r\nChỉ tho&aacute;ng buồn cho m&igrave;nh... V&agrave; cả anh!</p>\r\n\r\n<p><strong>Em chẳng sai - khi em đ&atilde; tin anh</strong><br />\r\nV&agrave; cố chấp nghĩ anh dễ thay đổi<br />\r\nNhưng em l&agrave; bến đỗ b&igrave;nh y&ecirc;n khi mệt anh gh&eacute; tới...<br />\r\nV&agrave; lại đi khi niềm vui kh&aacute;c gọi mời...</p>\r\n\r\n<p><strong>Em nghĩ rằng nước mắt sẽ chẳng rơi</strong><br />\r\nKhi mỗi ng&agrave;y cứ chờ mong tr&ocirc;ng ng&oacute;ng<br />\r\nN&agrave;o đ&acirc;u em c&oacute; vẽ cho m&igrave;nh ch&uacute;t hy vọng<br />\r\nChỉ v&igrave; một điều... L&agrave; em vẫn y&ecirc;u anh!</p>\r\n\r\n<p><strong>Chỉ tiếc l&agrave; niềm tin qu&aacute; mỏng manh</strong><br />\r\nEm chỉ l&agrave; một sợi tơ trong v&ocirc; v&agrave;n qu&ecirc;n nhớ<br />\r\nỞ nơi anh! Em đ&atilde; qu&ecirc;n mất m&igrave;nh c&ograve;n thở...<br />\r\nV&agrave; t&igrave;nh y&ecirc;u ơi! Nếu như c&ograve;n c&oacute; thể...<br />\r\nAnh c&oacute; thể...<br />\r\nĐi xa em hơn nữa? C&oacute; được kh&ocirc;ng?</p>\r\n', 'bai tho,tho hay,tinh yeu', 'post', 1, '', NULL, '', 1, 2),
 (9, 'xxx', '2015-03-05', '', '', '<h2>Kết quả T&igrave;m kiếm</h2>\r\n\r\n<div id="ires" style="padding-top: 6px; color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: medium; line-height: normal;">\r\n<div id="akp_target">&nbsp;</div>\r\n\r\n<div class="srg">\r\n<ul>\r\n	<li>\r\n	<div', '<h2>Kết quả T&igrave;m kiếm</h2>\r\n\r\n<div id="ires" style="padding-top: 6px; color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: medium; line-height: normal;">\r\n<div id="akp_target">&nbsp;</div>\r\n\r\n<div class="srg">\r\n<ul>\r\n	<li>\r\n	<div class="rc" style="position: relative;">\r\n	<h3><a href="http://php.net/strip_tags" style="color: rgb(102, 0, 153); cursor: pointer; text-decoration: none;">PHP: strip_tags - Manual</a></h3>\r\n\r\n	<div class="s" style="max-width: 42em; color: rgb(84, 84, 84); line-height: 18px;">\r\n	<div class="f kv _SWb" style="color: rgb(128, 128, 128); height: 17px; line-height: 16px; white-space: nowrap;"><cite><strong>php</strong>.net/strip_<strong>tags</strong></cite>\r\n\r\n	<div class="action-menu ab_ctl" style="display: inline; position: relative; margin: 0px 3px; vertical-align: middle; -webkit-user-select: none;">\r\n	<div class="action-menu-panel ab_dropdown" style="border: 1px solid rgba(0, 0, 0, 0.2); font-size: 13px; padding: 0px; position: absolute; right: auto; top: 12px; z-index: 3; -webkit-transition: opacity 0.218s; transition: opacity 0.218s; -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px; box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px; left: 0px; visibility: hidden; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;">\r\n	<ul>\r\n		<li>&nbsp;</li>\r\n	</ul>\r\n	</div>\r\n	</div>\r\n	<a class="fl" href="http://translate.google.com/translate?hl=vi&amp;sl=en&amp;u=http://php.net/strip_tags&amp;prev=search" style="float: left; text-decoration: none; color: rgb(26, 13, 171); cursor: pointer; font-size: 14px;">Dịch trang n&agrave;y</a></div>\r\n\r\n	<div class="f slp" style="color: rgb(128, 128, 128);">&nbsp;</div>\r\n	This function tries to return a string with all NULL bytes,&nbsp;<strong>HTML</strong>&nbsp;and&nbsp;<strong>PHP tags</strong>&nbsp;stripped.....&nbsp;//prevent strip_tags from&nbsp;<strong>removing html</strong>&nbsp;comments (MS Word introduced&nbsp;&nbsp;...</div>\r\n	</div>\r\n	</li>\r\n	<li>\r\n	<div class="rc" style="position: relative;">\r\n	<h3><a href="http://www.w3schools.com/php/func_string_strip_tags.asp" style="color: rgb(102, 0, 153); cursor: pointer; text-decoration: none;">PHP strip_tags() Function - W3Schools</a></h3>\r\n\r\n	<div class="s" style="max-width: 42em; color: rgb(84, 84, 84); line-height: 18px;">\r\n	<div class="f kv _SWb" style="color: rgb(128, 128, 128); height: 17px; line-height: 16px; white-space: nowrap;"><cite>www.w3schools.com/<strong>php</strong>/func_string_strip_<strong>tags</strong>.asp</cite>\r\n\r\n	<div class="action-menu ab_ctl" style="display: inline; position: relative; margin: 0px 3px; vertical-align: middle; -webkit-user-select: none;">\r\n	<div class="action-menu-panel ab_dropdown" style="border: 1px solid rgba(0, 0, 0, 0.2); font-size: 13px; padding: 0px; position: absolute; right: auto; top: 12px; z-index: 3; -webkit-transition: opacity 0.218s; transition: opacity 0.218s; -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px; box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px; left: 0px; visibility: hidden; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;">\r\n	<ul>\r\n		<li>&nbsp;</li>\r\n		<li>&nbsp;</li>\r\n	</ul>\r\n	</div>\r\n	</div>\r\n	<a class="fl" href="http://translate.google.com/translate?hl=vi&amp;sl=en&amp;u=http://www.w3schools.com/php/func_string_strip_tags.asp&amp;prev=search" style="float: left; text-decoration: none; color: rgb(26, 13, 171); cursor: pointer; font-size: 14px;">Dịch trang n&agrave;y</a></div>\r\n\r\n	<div class="f slp" style="color: rgb(128, 128, 128);">&nbsp;</div>\r\n	The strip_tags() function string</div>\r\n	</div>\r\n	</li>\r\n</ul>\r\n</div>\r\n\r\n<ol>\r\n</ol>\r\n</div>\r\n', '', 'post', 1, '', NULL, '', 1, 1),
 (10, 'xxx', '0000-00-00', '', '', '<h2>Kết quả T&igrave;m kiếm</h2>\r\n\r\n<div id="ires" style="padding-top: 6px; color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: medium; line-height: normal;">\r\n<div id="akp_target">&nbsp;</div>\r\n\r\n<div class="srg">\r\n<ul>\r\n	<li>\r\n	<div', '<h2>Kết quả T&igrave;m kiếm</h2>\r\n\r\n<div id="ires" style="padding-top: 6px; color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: medium; line-height: normal;">\r\n<div id="akp_target">&nbsp;</div>\r\n\r\n<div class="srg">\r\n<ul>\r\n	<li>\r\n	<div class="rc" style="position: relative;">\r\n	<h3><a href="http://php.net/strip_tags" style="color: rgb(102, 0, 153); cursor: pointer; text-decoration: none;">PHP: strip_tags - Manual</a></h3>\r\n\r\n	<div class="s" style="max-width: 42em; color: rgb(84, 84, 84); line-height: 18px;">\r\n	<div class="f kv _SWb" style="color: rgb(128, 128, 128); height: 17px; line-height: 16px; white-space: nowrap;"><cite><strong>php</strong>.net/strip_<strong>tags</strong></cite>\r\n\r\n	<div class="action-menu ab_ctl" style="display: inline; position: relative; margin: 0px 3px; vertical-align: middle; -webkit-user-select: none;">\r\n	<div class="action-menu-panel ab_dropdown" style="border: 1px solid rgba(0, 0, 0, 0.2); font-size: 13px; padding: 0px; position: absolute; right: auto; top: 12px; z-index: 3; -webkit-transition: opacity 0.218s; transition: opacity 0.218s; -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px; box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px; left: 0px; visibility: hidden; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;">\r\n	<ul>\r\n		<li>&nbsp;</li>\r\n	</ul>\r\n	</div>\r\n	</div>\r\n	<a class="fl" href="http://translate.google.com/translate?hl=vi&amp;sl=en&amp;u=http://php.net/strip_tags&amp;prev=search" style="float: left; text-decoration: none; color: rgb(26, 13, 171); cursor: pointer; font-size: 14px;">Dịch trang n&agrave;y</a></div>\r\n\r\n	<div class="f slp" style="color: rgb(128, 128, 128);">&nbsp;</div>\r\n	This function tries to return a string with all NULL bytes,&nbsp;<strong>HTML</strong>&nbsp;and&nbsp;<strong>PHP tags</strong>&nbsp;stripped.....&nbsp;//prevent strip_tags from&nbsp;<strong>removing html</strong>&nbsp;comments (MS Word introduced&nbsp;&nbsp;...</div>\r\n	</div>\r\n	</li>\r\n	<li>\r\n	<div class="rc" style="position: relative;">\r\n	<h3><a href="http://www.w3schools.com/php/func_string_strip_tags.asp" style="color: rgb(102, 0, 153); cursor: pointer; text-decoration: none;">PHP strip_tags() Function - W3Schools</a></h3>\r\n\r\n	<div class="s" style="max-width: 42em; color: rgb(84, 84, 84); line-height: 18px;">\r\n	<div class="f kv _SWb" style="color: rgb(128, 128, 128); height: 17px; line-height: 16px; white-space: nowrap;"><cite>www.w3schools.com/<strong>php</strong>/func_string_strip_<strong>tags</strong>.asp</cite>\r\n\r\n	<div class="action-menu ab_ctl" style="display: inline; position: relative; margin: 0px 3px; vertical-align: middle; -webkit-user-select: none;">\r\n	<div class="action-menu-panel ab_dropdown" style="border: 1px solid rgba(0, 0, 0, 0.2); font-size: 13px; padding: 0px; position: absolute; right: auto; top: 12px; z-index: 3; -webkit-transition: opacity 0.218s; transition: opacity 0.218s; -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px; box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px; left: 0px; visibility: hidden; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;">\r\n	<ul>\r\n		<li>&nbsp;</li>\r\n		<li>&nbsp;</li>\r\n	</ul>\r\n	</div>\r\n	</div>\r\n	<a class="fl" href="http://translate.google.com/translate?hl=vi&amp;sl=en&amp;u=http://www.w3schools.com/php/func_string_strip_tags.asp&amp;prev=search" style="float: left; text-decoration: none; color: rgb(26, 13, 171); cursor: pointer; font-size: 14px;">Dịch trang n&agrave;y</a></div>\r\n\r\n	<div class="f slp" style="color: rgb(128, 128, 128);">&nbsp;</div>\r\n	The strip_tags() function strip</div>\r\n	</div>\r\n	</li>\r\n</ul>\r\n</div>\r\n\r\n<ol>\r\n</ol>\r\n</div>\r\n', '', 'post', 1, '', NULL, '', 1, 1),
 (11, 'xxx', '0000-00-00', '', '', '<h2>Definition and Usage</h2>\r\n\r\n<p>The strip_t<strong>ags() function strips a string from</strong> HTML, XML, and PHP tags.</p>\r\n\r\n<p><strong>Note:</strong>&nbsp;HTML comments are always stripped. This cannot', '<h2>Definition and Usage</h2>\r\n\r\n<p>The strip_t<strong>ags() function strips a string from</strong> HTML, XML, and PHP tags.</p>\r\n\r\n<p><strong>Note:</strong>&nbsp;HTML comments are always stripped. This cannot be changed with the allow parameter.</p>\r\n\r\n<p><strong>Note:</strong>&nbsp;This function is binary-safe.</p>\r\n', '', 'post', 1, '', NULL, '', 1, 1),
@@ -290,11 +279,10 @@ INSERT INTO `izi_post` (`id`, `title`, `post_date`, `author`, `thumbnail`, `exce
 --
 
 CREATE TABLE IF NOT EXISTS `izi_post_tag` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
   `post_id` int(10) unsigned DEFAULT NULL,
-  `tag_id` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+  `tag_id` int(10) unsigned DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `izi_post_tag`
@@ -318,7 +306,7 @@ INSERT INTO `izi_post_tag` (`id`, `post_id`, `tag_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `izi_product` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
   `model` int(11) NOT NULL,
   `price` decimal(15,0) unsigned NOT NULL,
@@ -332,25 +320,24 @@ CREATE TABLE IF NOT EXISTS `izi_product` (
   `tag_title` varchar(255) NOT NULL,
   `tag_description` text NOT NULL,
   `tag_keywords` varchar(255) NOT NULL,
-  `category_id` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
+  `category_id` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `izi_product`
 --
 
 INSERT INTO `izi_product` (`id`, `name`, `model`, `price`, `sale`, `thumbnail`, `quantity`, `description`, `views`, `sort_order`, `status`, `tag_title`, `tag_description`, `tag_keywords`, `category_id`) VALUES
-(1, 'PC Dell Vostro', 0, '15000000', '2000000', '/ci_admin/asset/plugin/kcfinder/upload/images/computer3.jpg', 30, '<p>may tinh de ban</p>\r\n', 1, 0, 1, '', '', '', 1),
-(12, 'sp xoas', 0, '27599000', '2000000', '/ci_admin/asset/plugin/kcfinder/upload/images/computer2.jpg', 34, '<p>sdfasdf</p>\r\n', 1, 0, 1, '', '', '', 1),
-(13, 'new product', 0, '100000000', '2000000', '/ci_admin/asset/plugin/kcfinder/upload/images/Q-0b0e5.jpg', 3, '<p>ban ghe noi that</p>\r\n', 1, 0, 1, '', '', '', 1),
-(15, 'them moi', 0, '15000000', '45', '/ci_admin/asset/plugin/kcfinder/upload/images/example-slide-3.jpg', 34, '<p>sfsdf</p>\r\n', 1, 0, 1, '', '', '', 1),
-(16, 'Máy tính thương hiệu SunPower SUNL007', 0, '27599000', '45678', '/ci_admin/asset/plugin/kcfinder/upload/images/250_26011_hncb0123.png', 56, '<p>ferwer</p>\r\n', 1, 0, 1, '', '', '', 1),
-(17, 'test san pham', 0, '100000', '0', '/iziweb_cms/assets/plugin/kcfinder/upload/images/computer1.jpg', 0, '', 1, 0, 1, '', '', '', 1),
-(18, 'abc', 0, '999', '0', '/iziweb_cms/assets/plugin/kcfinder/upload/images/avata1.jpg', 0, '', 1, 0, 1, '', '', '', 1),
-(19, 'dfd', 0, '999', '0', '', 0, '', 1, 0, 1, '', '', '', 1),
-(20, 'Máy tính bảng Ipad', 0, '9000000', '999', '/iziweb_cms/assets/plugin/kcfinder/upload/images/computer1.jpg', 20, '<p>M&ocirc; tả sản cm phẩm</p>\r\n', 1, 0, 1, '', '', '', 4),
-(23, 'test san pham', 0, '60000', '60000', '/iziweb_cms/assets/plugin/kcfinder/upload/images/1.jpg', 20, '<p>M&ocirc; tả sản phẩm xyz</p>\r\n', 1, 0, 1, '', '', '', 1);
+(1, 'PC Dell Vostro', 0, '15000000', '2000000', '/SampleCode/CMS/assets/plugin/kcfinder/upload/images/computer3.jpg', 30, '<p>may tinh de ban</p>\r\n', 1, 0, 1, '', '', '', 1),
+(12, 'sp xoas', 0, '27599000', '2000000', '/SampleCode/CMS/assets/plugin/kcfinder/upload/images/computer2.jpg', 34, '<p>sdfasdf</p>\r\n', 1, 0, 1, '', '', '', 1),
+(13, 'new product', 0, '100000000', '2000000', '/SampleCode/CMS/assets/plugin/kcfinder/upload/images/Q-0b0e5.jpg', 3, '<p>ban ghe noi that</p>\r\n', 1, 0, 1, '', '', '', 1),
+(15, 'them moi', 0, '15000000', '45', '/SampleCode/CMS/assets/plugin/kcfinder/upload/images/example-slide-3.jpg', 34, '<p>sfsdf</p>\r\n', 1, 0, 1, '', '', '', 1),
+(16, 'Máy tính thương hiệu SunPower SUNL007', 0, '27599000', '45678', '/SampleCode/CMS/assets/plugin/kcfinder/upload/images/250_26011_hncb0123.png', 56, '<p>ferwer</p>\r\n', 1, 0, 1, '', '', '', 1),
+(17, 'test san pham', 0, '100000', '0', '/SampleCode/CMS/assets/plugin/kcfinder/upload/images/computer1.jpg', 0, '', 1, 0, 1, '', '', '', 1),
+(18, 'abc', 0, '999', '0', '/SampleCode/CMS/assets/plugin/kcfinder/upload/images/avata1.jpg', 0, '', 1, 0, 1, '', '', '', 1),
+(19, 'dfd', 0, '9999', '0', '', 0, '', 1, 0, 1, '', '', '', 1),
+(20, 'Máy tính bảng Ipad', 0, '9000000', '999', '/SampleCode/CMS/assets/plugin/kcfinder/upload/images/computer1.jpg', 20, '<p>M&ocirc; tả sản cm phẩm</p>\r\n', 1, 0, 1, '', '', '', 4),
+(23, 'test san pham', 0, '60000', '60000', '/SampleCode/CMS/assets/plugin/kcfinder/upload/images/1.jpg', 20, '<p>M&ocirc; tả sản phẩm xyz</p>\r\n', 1, 0, 1, '', '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -359,12 +346,11 @@ INSERT INTO `izi_product` (`id`, `name`, `model`, `price`, `sale`, `thumbnail`, 
 --
 
 CREATE TABLE IF NOT EXISTS `izi_product_attr` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
   `product_id` int(11) NOT NULL,
   `attr_id` int(11) NOT NULL,
-  `value` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+  `value` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `izi_product_attr`
@@ -394,11 +380,10 @@ INSERT INTO `izi_product_attr` (`id`, `product_id`, `attr_id`, `value`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `izi_product_img` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
   `product_id` int(11) NOT NULL,
-  `path` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=62 ;
+  `path` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `izi_product_img`
@@ -423,14 +408,13 @@ INSERT INTO `izi_product_img` (`id`, `product_id`, `path`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `izi_product_order` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `unit_price` decimal(15,4) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `total` decimal(15,4) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+  `total` decimal(15,4) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `izi_product_order`
@@ -448,12 +432,11 @@ INSERT INTO `izi_product_order` (`id`, `order_id`, `product_id`, `unit_price`, `
 --
 
 CREATE TABLE IF NOT EXISTS `izi_tag` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `slug` varchar(255) DEFAULT NULL,
-  `count_used` int(10) unsigned DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+  `count_used` int(10) unsigned DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `izi_tag`
@@ -477,16 +460,15 @@ INSERT INTO `izi_tag` (`id`, `name`, `slug`, `count_used`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `izi_topic` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `slug` varchar(255) DEFAULT NULL,
   `parent_id` int(10) unsigned DEFAULT '0',
   `tag_title` varchar(255) DEFAULT NULL,
   `tag_description` varchar(255) DEFAULT NULL,
   `tag_keywords` varchar(255) DEFAULT NULL,
-  `status` tinyint(4) DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+  `status` tinyint(4) DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `izi_topic`
@@ -506,22 +488,228 @@ INSERT INTO `izi_topic` (`id`, `name`, `slug`, `parent_id`, `tag_title`, `tag_de
 --
 
 CREATE TABLE IF NOT EXISTS `izi_user` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `role` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+  `role` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `izi_user`
 --
 
 INSERT INTO `izi_user` (`id`, `username`, `password`, `email`, `role`) VALUES
-(3, 'admin', '47bce5c74f589f4867dbd57e9ca9f808', 'nhansay@gmail.com', 0),
+(3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'nhansay@gmail.com', 0),
 (4, 'superadmin', 'b706835de79a2b4e80506f582af3676a', 'superadmin@gmail.com', 0);
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `izi_attribute`
+--
+ALTER TABLE `izi_attribute`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `izi_attr_group`
+--
+ALTER TABLE `izi_attr_group`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `izi_category`
+--
+ALTER TABLE `izi_category`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `parent_id` (`parent_id`);
+
+--
+-- Indexes for table `izi_comment`
+--
+ALTER TABLE `izi_comment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `izi_config`
+--
+ALTER TABLE `izi_config`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `izi_customer`
+--
+ALTER TABLE `izi_customer`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `izi_menu`
+--
+ALTER TABLE `izi_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `izi_online`
+--
+ALTER TABLE `izi_online`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `izi_order`
+--
+ALTER TABLE `izi_order`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `izi_post`
+--
+ALTER TABLE `izi_post`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `izi_post_tag`
+--
+ALTER TABLE `izi_post_tag`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `izi_product`
+--
+ALTER TABLE `izi_product`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `izi_product_attr`
+--
+ALTER TABLE `izi_product_attr`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `izi_product_img`
+--
+ALTER TABLE `izi_product_img`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `izi_product_order`
+--
+ALTER TABLE `izi_product_order`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `izi_tag`
+--
+ALTER TABLE `izi_tag`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `izi_topic`
+--
+ALTER TABLE `izi_topic`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `izi_user`
+--
+ALTER TABLE `izi_user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `izi_attribute`
+--
+ALTER TABLE `izi_attribute`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `izi_attr_group`
+--
+ALTER TABLE `izi_attr_group`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `izi_category`
+--
+ALTER TABLE `izi_category`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `izi_comment`
+--
+ALTER TABLE `izi_comment`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `izi_config`
+--
+ALTER TABLE `izi_config`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `izi_customer`
+--
+ALTER TABLE `izi_customer`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `izi_menu`
+--
+ALTER TABLE `izi_menu`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `izi_online`
+--
+ALTER TABLE `izi_online`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `izi_order`
+--
+ALTER TABLE `izi_order`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `izi_post`
+--
+ALTER TABLE `izi_post`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT for table `izi_post_tag`
+--
+ALTER TABLE `izi_post_tag`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `izi_product`
+--
+ALTER TABLE `izi_product`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+--
+-- AUTO_INCREMENT for table `izi_product_attr`
+--
+ALTER TABLE `izi_product_attr`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
+--
+-- AUTO_INCREMENT for table `izi_product_img`
+--
+ALTER TABLE `izi_product_img`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=62;
+--
+-- AUTO_INCREMENT for table `izi_product_order`
+--
+ALTER TABLE `izi_product_order`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `izi_tag`
+--
+ALTER TABLE `izi_tag`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `izi_topic`
+--
+ALTER TABLE `izi_topic`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `izi_user`
+--
+ALTER TABLE `izi_user`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
