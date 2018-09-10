@@ -23,7 +23,7 @@
 
   function giai($giatri_dau,$baitoan='+', $giatri_cuoi) {
     //code
-    echo $giatri_dau.' '.$baitoan.' '.$giatri_cuoi.' bang ';
+    echo $giatri_dau.' '.$baitoan.' '.$giatri_cuoi.' = ';
     if($baitoan == '-') {
       echo tinhhieu($giatri_dau,$giatri_cuoi);
     } else if($baitoan == '*') {
