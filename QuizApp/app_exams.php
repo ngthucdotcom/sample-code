@@ -3,7 +3,8 @@
   session_start();
   if(isset($_SESSION['user']) && $_SESSION['user']['role'] == 'teacher') {
     // do something...
-    $sql_select_exams = "SELECT * FROM quiz_exams";
+    $teacher = $_SESSION['user']['username'];
+    $sql_select_exams = "SELECT * FROM quiz_exams WHERE teacher = '$teacher'";
     $data_exams = $db->fetch_assoc($sql_select_exams,0);
   } else {
     echo '<meta http-equiv="refresh" content="0,url='.$base_url.'app_home.php">';
@@ -39,31 +40,29 @@
         <thead>
           <tr>
             <th>STT</th>
-            <th>Tài khoản</th>
-            <th>Tên đầy đủ</th>
-            <th>Quyền hạn</th>
-            <th>Tình trạng</th>
+            <th>Đề thi</th>
+            <th>Điểm cần đạt</th>
             <th>Cập nhật</th>
           </tr>
         </thead>
         <tbody>
           <?php
             $i=1;
-            foreach ($data_accounts as $key => $row_user) {
-              // code...
-              echo '<tr>
-                <td>'.$i.'</td>
-                <td>'.$row_user['username'].'</td>
-                <td>'.$row_user['fullname'].'</td>
-                <td>'.(($row_user['role'] == 'admin') ? 'Quản trị viên' : (($row_user['role']=='teacher') ? 'Giảng viên' : (($row_user['role']=='student') ? 'Thí sinh' : '-'))).'</td>
-                <td>'.(($row_user['status']=='active') ? 'Hoạt động' : 'Tạm khóa').'</td>
-                <td>
-                  <a href="'.$base_url.'app_account_edit/'.$row_user['username'].'" class="btn btn-info">Sửa</a>
-                  |
-                  <a href="'.$base_url.'app_account_delete/'.$row_user['username'].'" class="btn btn-danger">Xóa</a>
-                </td>
-              </tr>';
-              $i++;
+            if(count($data_exams) > 0) {
+              foreach ($data_exams as $key => $row_exam) {
+                // code...
+                echo '<tr>
+                  <td>'.$i.'</td>
+                  <td>'.$row_exam['exam'].'</td>
+                  <td>'.$row_exam['point_require'].'</td>
+                  <td>
+                    <a href="'.$base_url.'app_account_edit/'.$row_exam['id'].'" class="btn btn-info">Sửa</a>
+                    |
+                    <a href="'.$base_url.'app_account_delete/'.$row_exam['id'].'" class="btn btn-danger">Xóa</a>
+                  </td>
+                </tr>';
+                $i++;
+              }
             }
           ?>
         </tbody>
