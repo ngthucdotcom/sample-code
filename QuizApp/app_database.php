@@ -30,6 +30,56 @@ class DB
             return mysqli_query($this->cn, $sql);
         }
     }
+
+    // Hàm insert data
+    public function insert_row($table,$data)
+    {
+        if ($this->cn)
+        {
+            $field = null;
+            $field_value = null;
+            foreach ($data as $key => $value) {
+              // code...
+              if($field == null) $field = $key;
+              else $field = $field.','.$key;
+            }
+
+            foreach ($data as $key => $value) {
+              // code...
+              if($field_value == null) {
+                if(is_numeric($value)) $field_value = $value;
+                else $field_value = '"'.$value.'"';
+              } else {
+                if(is_numeric($value)) $field_value = $field_value.','.$value;
+                else $field_value = $field_value.','.'"'.$value.'"';
+              }
+            }
+            $insert = 'INSERT INTO '.$table.'('.$field.') VALUES ('.$field_value.')';
+            return mysqli_query($this->cn, $insert);
+        }
+    }
+
+    // Hàm insert data
+    public function update_row($table,$data,$where,$at)
+    {
+        if ($this->cn)
+        {
+            $set = null;
+            foreach ($data as $key => $value) {
+              // code...
+              if($set == null) {
+                if(is_numeric($value)) $set = $key.'='.$value.'';
+                else $set = $key.'="'.$value.'"';
+              } else {
+                if(is_numeric($value)) $set = $set.', '.$key.'='.$value.'';
+                else $set = $set.', '.$key.'="'.$value.'"';
+              }
+            }
+            $update = 'UPDATE '.$table.' SET '.$set.' WHERE '.$where.'='.$at;
+            return mysqli_query($this->cn, $update);
+        }
+    }
+
     // Hàm đếm số hàng
     public function num_rows($sql = null)
     {
