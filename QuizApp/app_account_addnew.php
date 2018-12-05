@@ -1,7 +1,7 @@
 <?php
   require_once 'app_connect.php';
   session_start();
-  if(isset($_SESSION['user']) && $_SESSION['user']['role'] == 'admin') {
+  if(isset($_SESSION['user']) && ($_SESSION['user']['role'] == 'admin' || $_SESSION['user']['role'] == 'bypass')) {
     // do something...
   } else {
     echo '<meta http-equiv="refresh" content="0,url='.$base_url.'app_home.php">';
@@ -11,18 +11,26 @@
 <?php
 // Code xu ly
 if(isset($_POST['addnew'])) {
-  $uid = htmlspecialchars($_POST['username']);
-  $name = htmlspecialchars($_POST['fullname']);
-  $pwd = md5(htmlspecialchars($_POST['password']));
-  $role = $_POST['role'];
-  $status = $_POST['status'];
+  $data['username'] = htmlspecialchars($_POST['username']);
+  $data['fullname'] = htmlspecialchars($_POST['fullname']);
+  $data['password'] = md5(htmlspecialchars($_POST['password']));
+  $data['role'] = $_POST['role'];
+  $data['status'] = $_POST['status'];
 
-  $sql_add_user = "INSERT INTO quiz_users(username,fullname,password,role,status) VALUES('$uid','$name','$pwd','$role','$status')";
-  if($db->query($sql_add_user)) {
-    echo '<script>
-      alert("Thêm mới thành công");
-      window.location.href = "'.$base_url.'";
-    </script>';
+  // $sql_add_user = "INSERT INTO quiz_users(username,fullname,password,role,status) VALUES('$uid','$name','$pwd','$role','$status')";
+  if($db->insert_row('quiz_users',$data)) {
+    if($_SESSION['user']['role'] == 'bypass') {
+      session_destroy();
+      echo '<script>
+        alert("Thêm mới thành công");
+        window.location.href = "'.$base_url.'";
+      </script>';
+    } else {
+      echo '<script>
+        alert("Thêm mới thành công");
+        window.location.href = "'.$base_url.'app_accounts.php";
+      </script>';
+    }
   } else {
     echo '<script>alert("Thêm mới thất bại");</script>';
   }

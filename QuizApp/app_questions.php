@@ -3,7 +3,7 @@
   session_start();
   if(isset($_SESSION['user']) && $_SESSION['user']['role'] == 'teacher') {
     // do something...
-    $sql_select_questions = "SELECT quiz_questions.id,quiz_questions.question,quiz_questions.level,quiz_answers.answer FROM quiz_questions JOIN quiz_answers WHERE quiz_questions.answer = quiz_answers.id";
+    $sql_select_questions = "SELECT * FROM quiz_questions";
     $data_questions = $db->fetch_assoc($sql_select_questions,0);
   } else {
     echo '<meta http-equiv="refresh" content="0,url='.$base_url.'app_home.php">';
@@ -58,9 +58,9 @@
                   <td>'.$row_question['answer'].'</td>
                   <td>'.(($row_question['level'] == 'easy') ? 'Dễ' : (($row_question['level']=='medium') ? 'Trung bình' : (($row_question['level']=='hard') ? 'Khó' : '-'))).'</td>
                   <td>
-                    <a href="'.$base_url.'app_question_edit/'.$row_question['id'].'" class="btn btn-info">Sửa</a>
+                    <a href="'.$base_url.'app_question_update.php/?id='.$row_question['id'].'" class="btn btn-info">Sửa</a>
                     |
-                    <a href="'.$base_url.'app_question_delete/'.$row_question['id'].'" class="btn btn-danger">Xóa</a>
+                    <a href="'.$base_url.'app_question_delete.php/?id='.$row_question['id'].'" class="btn btn-danger">Xóa</a>
                   </td>
                 </tr>';
                 $i++;

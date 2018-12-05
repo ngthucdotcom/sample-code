@@ -24,7 +24,8 @@
     <div class="container">
       <h1>Ứng dụng thi trắc nghiệm - Quiz App</h1>
       <hr>
-      <?php if(isset($_SESSION['user'])):?>
+      <?php if($db->num_rows('SELECT * FROM quiz_users') > 0) {
+        if(isset($_SESSION['user'])):?>
       <h3>Họ tên: <strong><?=$_SESSION['user']['fullname']?></strong></h3>
       <h3>Quyền hạn:
         <strong>
@@ -47,7 +48,11 @@
           <a href="<?=$base_url;?>app_login.php">Truy cập</a>
         </strong>
       </h3>
-      <?php endif;?>
+      <?php endif;
+      } else {
+        $_SESSION['user']['role'] = 'bypass';
+        echo '<meta http-equiv="refresh" content="0,url='.$base_url.'app_account_addnew.php">';
+      } ?>
     </div>
   </body>
 </html>

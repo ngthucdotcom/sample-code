@@ -88,11 +88,11 @@ class DB
             $query = mysqli_query($this->cn, $sql);
             if ($query)
             {
-                $row = mysqli_num_rows($query);
-                return $row;
+                return mysqli_num_rows($query);
             }
         }
     }
+
     // Hàm lấy dữ liệu
     public function fetch_assoc($sql = null, $type)
     {

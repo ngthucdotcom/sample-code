@@ -63,6 +63,8 @@
                 </tr>';
                 $i++;
               }
+            } else {
+              echo '<tr><td colspan="5" style="text-align:center;">Không có đề thi!</td></tr>';
             }
           ?>
         </tbody>
