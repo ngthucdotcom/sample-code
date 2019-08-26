@@ -47,7 +47,7 @@
 ?>
 
 <!-- Nhap lieu tu ban phim -->
-<center>
+<div style="text-align: center;">
   <form method="post">
     <?php
       if(isset($_POST['send']) && ($_POST['send']=='AC')) {
@@ -96,8 +96,8 @@
       if(isset($_POST['send']) && ($_POST['send']=='=')) $_SESSION['calculator']['result'] = giai($first,$cal,$second);
       echo '" readonly style="border-top: 0; text-align: right; width: 190px"><br />';
     ?>
-    <!-- <input type="number" name="A" value="<?php if(isset($_POST['send'])) echo $_POST['A']; ?>" placeholder="Nhap gia tri A" style="width: 190px"><br />
-    <input type="number" name="B" value="<?php if(isset($_POST['send'])) echo $_POST['B']; ?>" placeholder="Nhap gia tri B" style="width: 190px"><br /> -->
+    <input type="number" name="A" value="<?php if(isset($_POST['send'])) echo $_POST['A']; ?>" placeholder="Nhap gia tri A" style="width: 190px"><br />
+    <input type="number" name="B" value="<?php if(isset($_POST['send'])) echo $_POST['B']; ?>" placeholder="Nhap gia tri B" style="width: 190px"><br />
     <input type="submit" name="send" value="7" style="width: 35px">
     <input type="submit" name="send" value="8" style="width: 35px">
     <input type="submit" name="send" value="9" style="width: 35px">
@@ -119,4 +119,4 @@
     <input type="submit" name="send" value="%" style="width: 35px">
     <input type="submit" name="send" value="=" style="width: 35px"><br>
   </form>
-</center>
+</div>
