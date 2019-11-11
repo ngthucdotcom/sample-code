@@ -1,1 +1,4 @@
 theme: jekyll-theme-leap-day
+title: 'Sample Code'
+description: 'Code Library for Community.'
+show_downloads: true
