@@ -20,5 +20,6 @@ Code Library for Community
 - [Phone Ring Ring](PhoneRingRing.html)
 - [Click Button Copy To Clipboard](ClickButtonCopyToClipboard.html)
 - [Button Float](ButtonFloatHTML.html)
+- [Animated 3D CUBE](Animated-3D-CUBE.html)
 
 # Thanks for follow!
