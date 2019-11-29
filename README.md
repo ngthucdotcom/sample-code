@@ -30,5 +30,6 @@ Code Library for Community
 - [Login Template](LoginTemplate)
 - [Multilevel Accordion Menu](MultilevelAccordionMenu)
 - [Multi-level Dropdown Menu](MultiLevelMenu)
+- [Button of Datatables](ButtonDatatables)
 
 # Thanks for follow!
