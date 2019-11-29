@@ -9,6 +9,7 @@ Code Library for Community
 * Javascript
 * AJAX
 * Jquery
+* [Minify](http://minifycode.com/)
 
 ## Text Editor
 * Atom: https://atom.io/
