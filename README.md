@@ -22,5 +22,6 @@ Code Library for Community
 - [Button Float](ButtonFloatHTML.html)
 - [Animated 3D CUBE](Animated-3D-CUBE.html)
 - [T-Rex Running Game](T-Rex-Running.html)
+- [Floating Island.html](Floating-Island.html)
 
 # Thanks for follow!
