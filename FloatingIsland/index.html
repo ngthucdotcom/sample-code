@@ -1,37 +1,3820 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+
+  <title>CodePen - Floating Island</title>
+  
+  
+  
+  
+  
+<style>
+  /* ----------------------------------------------- */
+/*                    Parameters                   */
+/* ----------------------------------------------- */
+/* --- Colors --- */
+/*#96bb45;*/
+/* --- Scale --- */
+/* --- Default 1 --- */
+/* --- Default 260 --- */
+/* --- Default 100 --- */
+/* --- Default 1 --- */
+/* --- Default 260 --- */
+/* --- Default 100 --- */
+/* --- Shadows --- */
+/* --- Animation --- */
+/* --- Fonts --- */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wWw.ttf) format('truetype');
+}
+/* ----------------------------------------------- */
+/* ----------------------------------------------- */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  background-color: #c1e3ed;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 1200px;
+  height: 900px;
+}
+.scale {
+  width: 100%;
+  height: 100%;
+  -webkit-transform: scale(0.7);
+          transform: scale(0.7);
+}
+.dirt-ground {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 1000px;
+  height: 80px;
+  background-color: #987349;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+.dirt-ground ul li {
+  position: absolute;
+  list-style: none;
+  background: #7c5e3c;
+  border-radius: 50%;
+}
+.dirt-ground ul li:nth-child(1) {
+  left: 10%;
+  top: 10px;
+  width: 40px;
+  height: 40px;
+}
+.dirt-ground ul li:nth-child(2) {
+  left: 5%;
+  top: 40px;
+  width: 30px;
+  height: 30px;
+}
+.dirt-ground ul li:nth-child(3) {
+  left: 25%;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+}
+.dirt-ground ul li:nth-child(4) {
+  left: 35%;
+  top: 20px;
+  width: 40px;
+  height: 40px;
+}
+.dirt-ground ul li:nth-child(5) {
+  left: 44%;
+  top: 50px;
+  width: 10px;
+  height: 10px;
+}
+.dirt-ground ul li:nth-child(6) {
+  left: 50%;
+  top: -5px;
+  width: 30px;
+  height: 30px;
+}
+.dirt-ground ul li:nth-child(7) {
+  left: 60%;
+  top: 14px;
+  width: 40px;
+  height: 40px;
+}
+.dirt-ground ul li:nth-child(8) {
+  left: 70%;
+  top: 10px;
+  width: 25px;
+  height: 25px;
+}
+.dirt-ground ul li:nth-child(9) {
+  left: 80%;
+  top: 40px;
+  width: 10px;
+  height: 10px;
+}
+.dirt-ground ul li:nth-child(10) {
+  left: 90%;
+  top: 25px;
+  width: 30px;
+  height: 30px;
+}
+.inter-dirt-ground {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 1060px;
+  height: 20px;
+  background-color: #7c5e3c;
+}
+.inter-dirt-ground::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: -20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #c1e3ed;
+}
+.inter-dirt-ground::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: -20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #c1e3ed;
+}
+.grass-ground {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  width: 1200px;
+  height: 80px;
+  background-color: #286633;
+  border-bottom: 80px solid #21542a;
+  border-radius: 80px;
+  overflow: hidden;
+}
+.grass-ground::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 150px;
+  width: 900px;
+  height: 80px;
+  border-radius: 80px;
+  background-color: #2f783c;
+}
+.house-wrapper {
+  z-index: 10;
+  position: absolute;
+  bottom: 208px;
+  left: 140px;
+  width: 1000px;
+  height: 520px;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+.house1 {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 80px;
+  height: 480px;
+  background-color: #c8c6c7;
+  overflow: hidden;
+}
+.house1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 45px;
+  width: 50px;
+  height: 1000px;
+  background-color: rgba(51, 51, 51, 0.2);
+  -webkit-transform: rotate(-5deg);
+          transform: rotate(-5deg);
+}
+.house1::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 30px;
+  width: 100px;
+  height: 240px;
+  background-color: rgba(51, 51, 51, 0.2);
+  -webkit-transform: rotate(-8deg);
+          transform: rotate(-8deg);
+}
+.house1 .house1 div.brick:nth-child(1) {
+  position: absolute;
+  top: 2%;
+  left: 81%;
+  width: 38px;
+  height: 19px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 .house1 div.brick:nth-child(2) {
+  position: absolute;
+  top: 9%;
+  left: 67%;
+  width: 19px;
+  height: 9.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 .house1 div.brick:nth-child(3) {
+  position: absolute;
+  top: 16%;
+  left: 42%;
+  width: 34px;
+  height: 17px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 .house1 div.brick:nth-child(4) {
+  position: absolute;
+  top: 23%;
+  left: 77%;
+  width: 13px;
+  height: 6.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 .house1 div.brick:nth-child(5) {
+  position: absolute;
+  top: 30%;
+  left: 1%;
+  width: 10px;
+  height: 5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 .house1 div.brick:nth-child(6) {
+  position: absolute;
+  top: 37%;
+  left: 28%;
+  width: 23px;
+  height: 11.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 .house1 div.brick:nth-child(7) {
+  position: absolute;
+  top: 44%;
+  left: 85%;
+  width: 23px;
+  height: 11.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 .house1 div.brick:nth-child(8) {
+  position: absolute;
+  top: 51%;
+  left: 47%;
+  width: 40px;
+  height: 20px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 .house1 div.brick:nth-child(9) {
+  position: absolute;
+  top: 58%;
+  left: 36%;
+  width: 26px;
+  height: 13px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 .house1 div.brick:nth-child(10) {
+  position: absolute;
+  top: 65%;
+  left: 22%;
+  width: 12px;
+  height: 6px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 .house1 div.brick:nth-child(11) {
+  position: absolute;
+  top: 72%;
+  left: 81%;
+  width: 11px;
+  height: 5.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 .house1 div.brick:nth-child(12) {
+  position: absolute;
+  top: 79%;
+  left: 62%;
+  width: 38px;
+  height: 19px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 .house1 div.brick:nth-child(13) {
+  position: absolute;
+  top: 86%;
+  left: 68%;
+  width: 30px;
+  height: 15px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 .house1 div.brick:nth-child(14) {
+  position: absolute;
+  top: 93%;
+  left: 9%;
+  width: 19px;
+  height: 9.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 .house1 div.brick:nth-child(15) {
+  position: absolute;
+  top: 100%;
+  left: 56%;
+  width: 34px;
+  height: 17px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 {
+  position: absolute;
+  bottom: -10px;
+  left: 80px;
+  width: 280px;
+  height: 500px;
+  background-color: #c8c6c7;
+  overflow: hidden;
+}
+.house2::after {
+  z-index: 20;
+  content: "";
+  position: absolute;
+  top: 50px;
+  right: -20px;
+  width: 100px;
+  height: 200px;
+  background-color: rgba(51, 51, 51, 0.2);
+  -webkit-transform: rotate(-8deg);
+          transform: rotate(-8deg);
+}
+.house2::before {
+  z-index: 20;
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  right: -40px;
+  width: 100px;
+  height: 250px;
+  background-color: rgba(51, 51, 51, 0.2);
+  -webkit-transform: rotate(-10deg);
+          transform: rotate(-10deg);
+}
+.house3 {
+  position: absolute;
+  bottom: -20px;
+  left: 360px;
+  width: 240px;
+  height: 480px;
+  background-color: #c8c6c7;
+  overflow: hidden;
+}
+.house3::after {
+  z-index: 20;
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  right: -30px;
+  width: 60px;
+  height: 460px;
+  background-color: rgba(51, 51, 51, 0.2);
+  -webkit-transform: rotate(-4deg);
+          transform: rotate(-4deg);
+}
+.house4 {
+  z-index: 30;
+  position: absolute;
+  bottom: -30px;
+  left: 600px;
+  width: 80px;
+  height: 540px;
+  background-color: #c8c6c7;
+  overflow: hidden;
+}
+.house5 {
+  position: absolute;
+  bottom: 0px;
+  left: 680px;
+  width: 280px;
+  height: 280px;
+  background-color: #c8c6c7;
+  overflow: hidden;
+}
+.house5::after {
+  z-index: 20;
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  right: -40px;
+  width: 100px;
+  height: 250px;
+  background-color: rgba(51, 51, 51, 0.2);
+  -webkit-transform: rotate(-10deg);
+          transform: rotate(-10deg);
+}
+.wood1 {
+  z-index: 50;
+  position: absolute;
+  bottom: 225px;
+  left: 680px;
+  width: 320px;
+  height: 48px;
+  overflow: hidden;
+  background-color: #ac6a44;
+}
+.wood1 .wood-lane-1 div.wood:nth-child(1) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 22%;
+  background-color: #8f5838;
+}
+.wood1 .wood-lane-1 div.wood:nth-child(2) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 19%;
+  background-color: #8f5838;
+}
+.wood1 .wood-lane-1 div.wood:nth-child(3) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 19%;
+  background-color: #9d613e;
+}
+.wood1 .wood-lane-1 div.wood:nth-child(4) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 18%;
+  background-color: #9d613e;
+}
+.wood1 .wood-lane-2 div.wood:nth-child(1) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 14%;
+  background-color: #8f5838;
+}
+.wood1 .wood-lane-2 div.wood:nth-child(2) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 21%;
+  background-color: #ac6a44;
+}
+.wood1 .wood-lane-2 div.wood:nth-child(3) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 18%;
+  background-color: #8f5838;
+}
+.wood1 .wood-lane-2 div.wood:nth-child(4) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 11%;
+  background-color: #ac6a44;
+}
+.wood1 .wood-lane-3 div.wood:nth-child(1) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 14%;
+  background-color: #8f5838;
+}
+.wood1 .wood-lane-3 div.wood:nth-child(2) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 24%;
+  background-color: #9d613e;
+}
+.wood1 .wood-lane-3 div.wood:nth-child(3) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 24%;
+  background-color: #9d613e;
+}
+.wood1 .wood-lane-3 div.wood:nth-child(4) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 14%;
+  background-color: #ac6a44;
+}
+.wood1 .wood-lane-4 div.wood:nth-child(1) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 21%;
+  background-color: #ac6a44;
+}
+.wood1 .wood-lane-4 div.wood:nth-child(2) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 14%;
+  background-color: #ac6a44;
+}
+.wood1 .wood-lane-4 div.wood:nth-child(3) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 18%;
+  background-color: #8f5838;
+}
+.wood1 .wood-lane-4 div.wood:nth-child(4) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 25%;
+  background-color: #ac6a44;
+}
+.wood2 {
+  z-index: 50;
+  position: absolute;
+  bottom: 405px;
+  left: 300px;
+  width: 300px;
+  height: 48px;
+  overflow: hidden;
+  background-color: #ac6a44;
+}
+.wood2 .wood-lane-1 div.wood:nth-child(1) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 12%;
+  background-color: #ac6a44;
+}
+.wood2 .wood-lane-1 div.wood:nth-child(2) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 13%;
+  background-color: #9d613e;
+}
+.wood2 .wood-lane-1 div.wood:nth-child(3) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 19%;
+  background-color: #8f5838;
+}
+.wood2 .wood-lane-1 div.wood:nth-child(4) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 21%;
+  background-color: #8f5838;
+}
+.wood2 .wood-lane-2 div.wood:nth-child(1) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 12%;
+  background-color: #8f5838;
+}
+.wood2 .wood-lane-2 div.wood:nth-child(2) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 22%;
+  background-color: #ac6a44;
+}
+.wood2 .wood-lane-2 div.wood:nth-child(3) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 12%;
+  background-color: #8f5838;
+}
+.wood2 .wood-lane-2 div.wood:nth-child(4) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 12%;
+  background-color: #8f5838;
+}
+.wood2 .wood-lane-3 div.wood:nth-child(1) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 22%;
+  background-color: #8f5838;
+}
+.wood2 .wood-lane-3 div.wood:nth-child(2) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 17%;
+  background-color: #ac6a44;
+}
+.wood2 .wood-lane-3 div.wood:nth-child(3) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 11%;
+  background-color: #ac6a44;
+}
+.wood2 .wood-lane-3 div.wood:nth-child(4) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 24%;
+  background-color: #9d613e;
+}
+.wood2 .wood-lane-4 div.wood:nth-child(1) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 22%;
+  background-color: #ac6a44;
+}
+.wood2 .wood-lane-4 div.wood:nth-child(2) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 22%;
+  background-color: #8f5838;
+}
+.wood2 .wood-lane-4 div.wood:nth-child(3) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 18%;
+  background-color: #9d613e;
+}
+.wood2 .wood-lane-4 div.wood:nth-child(4) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 14%;
+  background-color: #9d613e;
+}
+.wood3 {
+  z-index: 50;
+  position: absolute;
+  bottom: 200px;
+  left: 60px;
+  width: 300px;
+  height: 48px;
+  overflow: hidden;
+  background-color: #ac6a44;
+}
+.wood3 .wood-lane-1 div.wood:nth-child(1) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 14%;
+  background-color: #9d613e;
+}
+.wood3 .wood-lane-1 div.wood:nth-child(2) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 12%;
+  background-color: #ac6a44;
+}
+.wood3 .wood-lane-1 div.wood:nth-child(3) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 10%;
+  background-color: #ac6a44;
+}
+.wood3 .wood-lane-1 div.wood:nth-child(4) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 15%;
+  background-color: #8f5838;
+}
+.wood3 .wood-lane-2 div.wood:nth-child(1) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 22%;
+  background-color: #ac6a44;
+}
+.wood3 .wood-lane-2 div.wood:nth-child(2) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 21%;
+  background-color: #9d613e;
+}
+.wood3 .wood-lane-2 div.wood:nth-child(3) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 23%;
+  background-color: #8f5838;
+}
+.wood3 .wood-lane-2 div.wood:nth-child(4) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 17%;
+  background-color: #ac6a44;
+}
+.wood3 .wood-lane-3 div.wood:nth-child(1) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 10%;
+  background-color: #8f5838;
+}
+.wood3 .wood-lane-3 div.wood:nth-child(2) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 13%;
+  background-color: #9d613e;
+}
+.wood3 .wood-lane-3 div.wood:nth-child(3) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 25%;
+  background-color: #9d613e;
+}
+.wood3 .wood-lane-3 div.wood:nth-child(4) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 25%;
+  background-color: #ac6a44;
+}
+.wood3 .wood-lane-4 div.wood:nth-child(1) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 15%;
+  background-color: #9d613e;
+}
+.wood3 .wood-lane-4 div.wood:nth-child(2) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 10%;
+  background-color: #9d613e;
+}
+.wood3 .wood-lane-4 div.wood:nth-child(3) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 24%;
+  background-color: #9d613e;
+}
+.wood3 .wood-lane-4 div.wood:nth-child(4) {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 19%;
+  background-color: #ac6a44;
+}
+.wood-lane-1 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 160%;
+  height: 12px;
+  overflow-y: hidden;
+  font-size: 0;
+}
+.wood-lane-2 {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  width: 160%;
+  height: 12px;
+  overflow-y: hidden;
+  font-size: 0;
+}
+.wood-lane-3 {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  width: 160%;
+  height: 12px;
+  overflow-y: hidden;
+  font-size: 0;
+}
+.wood-lane-4 {
+  position: absolute;
+  bottom: 36px;
+  left: 0;
+  width: 160%;
+  height: 12px;
+  overflow-y: hidden;
+  font-size: 0;
+}
+.window1 {
+  position: absolute;
+  bottom: 160px;
+  left: 10px;
+  width: 60px;
+  height: 25px;
+  background-color: #5b8e89;
+  border: 4px solid #29403e;
+  overflow: hidden;
+}
+.window1::before {
+  content: "";
+  position: absolute;
+  bottom: -220px;
+  left: 100px;
+  width: 4px;
+  height: 600px;
+  background-color: #517e7a;
+  -webkit-transform: rotate(55deg);
+          transform: rotate(55deg);
+}
+.window1::after {
+  content: "";
+  position: absolute;
+  bottom: -230px;
+  left: 100px;
+  width: 2px;
+  height: 600px;
+  background-color: #517e7a;
+  -webkit-transform: rotate(54deg);
+          transform: rotate(54deg);
+}
+.window2 {
+  position: absolute;
+  bottom: 5px;
+  left: 130px;
+  width: 180px;
+  height: 180px;
+  background-color: #5b8e89;
+  border: 4px solid #29403e;
+  overflow: hidden;
+}
+.window2::before {
+  content: "";
+  position: absolute;
+  bottom: -260px;
+  left: 50px;
+  width: 8px;
+  height: 600px;
+  background-color: #517e7a;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.window2::after {
+  content: "";
+  position: absolute;
+  bottom: -280px;
+  left: 50px;
+  width: 4px;
+  height: 600px;
+  background-color: #517e7a;
+  -webkit-transform: rotate(48deg);
+          transform: rotate(48deg);
+}
+.window2 span {
+  z-index: 20;
+  position: absolute;
+  bottom: 0px;
+  left: 120px;
+  width: 4px;
+  height: 180px;
+  background-color: #29403e;
+}
+.window3 {
+  position: absolute;
+  bottom: 255px;
+  left: 200px;
+  width: 140px;
+  height: 140px;
+  background-color: #5b8e89;
+  border: 4px solid #29403e;
+  overflow: hidden;
+}
+.window3::before {
+  content: "";
+  position: absolute;
+  bottom: -260px;
+  left: 50px;
+  width: 8px;
+  height: 600px;
+  background-color: #517e7a;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.window3::after {
+  content: "";
+  position: absolute;
+  bottom: -280px;
+  left: 50px;
+  width: 4px;
+  height: 600px;
+  background-color: #517e7a;
+  -webkit-transform: rotate(48deg);
+          transform: rotate(48deg);
+}
+.window3 span {
+  z-index: 20;
+  position: absolute;
+  bottom: 0px;
+  left: 100px;
+  width: 4px;
+  height: 140px;
+  background-color: #29403e;
+}
+.window4 {
+  position: absolute;
+  bottom: -5px;
+  left: 380px;
+  width: 210px;
+  height: 180px;
+  background-color: #5b8e89;
+  border: 4px solid #29403e;
+  overflow: hidden;
+}
+.window4::before {
+  content: "";
+  position: absolute;
+  bottom: -260px;
+  left: 50px;
+  width: 10px;
+  height: 600px;
+  background-color: #517e7a;
+  -webkit-transform: rotate(46deg);
+          transform: rotate(46deg);
+}
+.window4::after {
+  content: "";
+  position: absolute;
+  bottom: -280px;
+  left: 50px;
+  width: 5px;
+  height: 600px;
+  background-color: #517e7a;
+  -webkit-transform: rotate(49deg);
+          transform: rotate(49deg);
+}
+.window4 span {
+  z-index: 20;
+  position: absolute;
+  bottom: 0px;
+  left: 70px;
+  width: 4px;
+  height: 180px;
+  background-color: #29403e;
+}
+.window4 span:nth-child(1) {
+  z-index: 20;
+  position: absolute;
+  bottom: 0px;
+  left: 140px;
+  width: 4px;
+  height: 180px;
+  background-color: #29403e;
+}
+.window5 {
+  position: absolute;
+  bottom: 240px;
+  left: 380px;
+  width: 210px;
+  height: 140px;
+  background-color: #5b8e89;
+  border: 4px solid #29403e;
+  overflow: hidden;
+}
+.window5::before {
+  content: "";
+  position: absolute;
+  bottom: -260px;
+  left: 50px;
+  width: 10px;
+  height: 600px;
+  background-color: #517e7a;
+  -webkit-transform: rotate(46deg);
+          transform: rotate(46deg);
+}
+.window5::after {
+  content: "";
+  position: absolute;
+  bottom: -280px;
+  left: 50px;
+  width: 5px;
+  height: 600px;
+  background-color: #517e7a;
+  -webkit-transform: rotate(49deg);
+          transform: rotate(49deg);
+}
+.window5 span {
+  z-index: 20;
+  position: absolute;
+  bottom: 0px;
+  left: 70px;
+  width: 4px;
+  height: 140px;
+  background-color: #29403e;
+}
+.window5 span:nth-child(1) {
+  z-index: 20;
+  position: absolute;
+  bottom: 0px;
+  left: 140px;
+  width: 3px;
+  height: 140px;
+  background-color: #29403e;
+}
+.window6 {
+  position: absolute;
+  bottom: 0px;
+  left: 700px;
+  width: 220px;
+  height: 210px;
+  background-color: #5b8e89;
+  border: 4px solid #29403e;
+  overflow: hidden;
+}
+.window6::before {
+  content: "";
+  position: absolute;
+  bottom: -260px;
+  left: 0px;
+  width: 10px;
+  height: 600px;
+  background-color: #517e7a;
+  -webkit-transform: rotate(49deg);
+          transform: rotate(49deg);
+}
+.window6::after {
+  content: "";
+  position: absolute;
+  bottom: -280px;
+  left: 0px;
+  width: 5px;
+  height: 600px;
+  background-color: #517e7a;
+  -webkit-transform: rotate(51deg);
+          transform: rotate(51deg);
+}
+.window6 span {
+  z-index: 20;
+  position: absolute;
+  bottom: 0px;
+  left: 40px;
+  width: 4px;
+  height: 210px;
+  background-color: #29403e;
+}
+.window6 span:nth-child(1) {
+  z-index: 20;
+  position: absolute;
+  bottom: 0px;
+  left: 130px;
+  width: 3px;
+  height: 210px;
+  background-color: #29403e;
+}
+.chimney {
+  z-index: 30;
+  position: absolute;
+  bottom: 500px;
+  left: 590px;
+  width: 100px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #898587;
+}
+.smoke {
+  z-index: 20;
+  position: absolute;
+  left: 10px;
+  top: -70px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  opacity: 0;
+  background-color: rgba(238, 238, 238, 0.8);
+  -webkit-animation: bounce_smoke 12s 0s infinite;
+          animation: bounce_smoke 12s 0s infinite;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+.smoke:nth-child(1) {
+  left: 5px;
+  top: -60px;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+.smoke:nth-child(2) {
+  left: 5px;
+  top: -70px;
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
+}
+.smoke:nth-child(3) {
+  left: 5px;
+  top: -100px;
+  -webkit-animation-delay: 1.3s;
+          animation-delay: 1.3s;
+}
+.smoke:nth-child(4) {
+  left: 10px;
+  top: -130px;
+  -webkit-animation-delay: 1.6s;
+          animation-delay: 1.6s;
+}
+.smoke:nth-child(5) {
+  left: 20px;
+  top: -155px;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+.smoke:nth-child(6) {
+  left: 5px;
+  top: -180px;
+  -webkit-animation-delay: 1.9s;
+          animation-delay: 1.9s;
+}
+.smoke:nth-child(7) {
+  left: 10px;
+  top: -210px;
+  -webkit-animation-delay: 2.2s;
+          animation-delay: 2.2s;
+}
+.smoke:nth-child(8) {
+  left: 15px;
+  top: -240px;
+  -webkit-animation-delay: 2.5s;
+          animation-delay: 2.5s;
+}
+.tree {
+  z-index: 5;
+  position: absolute;
+  left: 100px;
+  bottom: 260px;
+  width: 100px;
+}
+.tree .trunk {
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: #633d27;
+}
+.tree .leaves1 {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-right: 100px solid transparent;
+  border-left: 100px solid transparent;
+  border-bottom: 160px solid #1a3f1e;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.24);
+}
+.tree .leaves2 {
+  position: absolute;
+  left: 50%;
+  bottom: 110px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-right: 90px solid transparent;
+  border-left: 90px solid transparent;
+  border-bottom: 160px solid #2c592e;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.24);
+}
+.tree .leaves3 {
+  position: absolute;
+  left: 50%;
+  bottom: 180px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-right: 80px solid transparent;
+  border-left: 80px solid transparent;
+  border-bottom: 160px solid #4f9050;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.24);
+}
+.tree .leaves4 {
+  position: absolute;
+  left: 50%;
+  bottom: 250px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-right: 65px solid transparent;
+  border-left: 65px solid transparent;
+  border-bottom: 150px solid #7bbc7c;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.24);
+}
+.tree.first {
+  z-index: 5;
+  position: absolute;
+  left: 90px;
+  bottom: 260px;
+  width: 100px;
+}
+.tree.second {
+  z-index: 5;
+  position: absolute;
+  left: 200px;
+  bottom: 260px;
+  width: 100px;
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+}
+.tree.third {
+  z-index: 5;
+  position: absolute;
+  left: 700px;
+  bottom: 260px;
+  width: 100px;
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+}
+.tree.four {
+  z-index: 5;
+  position: absolute;
+  left: 940px;
+  bottom: 260px;
+  width: 100px;
+  -webkit-transform: scale(1.4);
+          transform: scale(1.4);
+}
+.cloud1 {
+  position: absolute;
+  opacity: 0;
+  left: -440px;
+  top: 40px;
+  width: 300px;
+  height: 50px;
+  border-top-right-radius: 100px;
+  border-top-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+  background-color: #f5f5f5;
+  -webkit-animation: move_cloud 24s linear infinite;
+          animation: move_cloud 24s linear infinite;
+}
+.cloud1::after {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: 20px;
+  width: 120px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+}
+.cloud1::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: 30px;
+  width: 180px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+}
+.cloud2 {
+  position: absolute;
+  opacity: 0;
+  left: -440px;
+  top: 30px;
+  width: 300px;
+  height: 60px;
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  background-color: #f5f5f5;
+  -webkit-animation: move_cloud 24s 14s linear infinite;
+          animation: move_cloud 24s 14s linear infinite;
+}
+.cloud2::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 30px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+}
+.cloud2::before {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  right: 40px;
+  width: 150px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+}
+.cloud3 {
+  position: absolute;
+  opacity: 0;
+  left: -440px;
+  top: -100px;
+  width: 200px;
+  height: 60px;
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  background-color: #f5f5f5;
+  -webkit-animation: move_cloud 24s 5s linear infinite;
+          animation: move_cloud 24s 5s linear infinite;
+}
+.cloud3::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 30px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+}
+.cloud3::before {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+}
+.house1 div.brick:nth-child(1) {
+  position: absolute;
+  top: 2%;
+  left: 41%;
+  width: 13px;
+  height: 6.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 div.brick:nth-child(2) {
+  position: absolute;
+  top: 9%;
+  left: 9%;
+  width: 13px;
+  height: 6.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 div.brick:nth-child(3) {
+  position: absolute;
+  top: 16%;
+  left: 39%;
+  width: 33px;
+  height: 16.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 div.brick:nth-child(4) {
+  position: absolute;
+  top: 23%;
+  left: 69%;
+  width: 29px;
+  height: 14.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 div.brick:nth-child(5) {
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  width: 10px;
+  height: 5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 div.brick:nth-child(6) {
+  position: absolute;
+  top: 37%;
+  left: 40%;
+  width: 18px;
+  height: 9px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 div.brick:nth-child(7) {
+  position: absolute;
+  top: 44%;
+  left: 73%;
+  width: 33px;
+  height: 16.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 div.brick:nth-child(8) {
+  position: absolute;
+  top: 51%;
+  left: 64%;
+  width: 28px;
+  height: 14px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 div.brick:nth-child(9) {
+  position: absolute;
+  top: 58%;
+  left: 68%;
+  width: 26px;
+  height: 13px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 div.brick:nth-child(10) {
+  position: absolute;
+  top: 65%;
+  left: 66%;
+  width: 37px;
+  height: 18.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 div.brick:nth-child(11) {
+  position: absolute;
+  top: 72%;
+  left: 8%;
+  width: 10px;
+  height: 5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 div.brick:nth-child(12) {
+  position: absolute;
+  top: 79%;
+  left: 16%;
+  width: 26px;
+  height: 13px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 div.brick:nth-child(13) {
+  position: absolute;
+  top: 86%;
+  left: 59%;
+  width: 17px;
+  height: 8.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 div.brick:nth-child(14) {
+  position: absolute;
+  top: 93%;
+  left: 55%;
+  width: 21px;
+  height: 10.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house1 div.brick:nth-child(15) {
+  position: absolute;
+  top: 100%;
+  left: 7%;
+  width: 36px;
+  height: 18px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(1) {
+  position: absolute;
+  top: 2%;
+  left: 47%;
+  width: 18px;
+  height: 9px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(2) {
+  position: absolute;
+  top: 4%;
+  left: 19%;
+  width: 26px;
+  height: 13px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(3) {
+  position: absolute;
+  top: 6%;
+  left: 35%;
+  width: 18px;
+  height: 9px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(4) {
+  position: absolute;
+  top: 8%;
+  left: 56%;
+  width: 39px;
+  height: 19.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(5) {
+  position: absolute;
+  top: 10%;
+  left: 60%;
+  width: 26px;
+  height: 13px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(6) {
+  position: absolute;
+  top: 12%;
+  left: 71%;
+  width: 23px;
+  height: 11.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(7) {
+  position: absolute;
+  top: 14%;
+  left: 73%;
+  width: 17px;
+  height: 8.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(8) {
+  position: absolute;
+  top: 16%;
+  left: 78%;
+  width: 17px;
+  height: 8.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(9) {
+  position: absolute;
+  top: 18%;
+  left: 78%;
+  width: 24px;
+  height: 12px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(10) {
+  position: absolute;
+  top: 20%;
+  left: 59%;
+  width: 28px;
+  height: 14px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(11) {
+  position: absolute;
+  top: 22%;
+  left: 78%;
+  width: 20px;
+  height: 10px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(12) {
+  position: absolute;
+  top: 24%;
+  left: 48%;
+  width: 40px;
+  height: 20px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(13) {
+  position: absolute;
+  top: 26%;
+  left: 6%;
+  width: 21px;
+  height: 10.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(14) {
+  position: absolute;
+  top: 28%;
+  left: 24%;
+  width: 37px;
+  height: 18.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(15) {
+  position: absolute;
+  top: 30%;
+  left: 42%;
+  width: 27px;
+  height: 13.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(16) {
+  position: absolute;
+  top: 32%;
+  left: 77%;
+  width: 32px;
+  height: 16px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(17) {
+  position: absolute;
+  top: 34%;
+  left: 39%;
+  width: 13px;
+  height: 6.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(18) {
+  position: absolute;
+  top: 36%;
+  left: 66%;
+  width: 29px;
+  height: 14.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(19) {
+  position: absolute;
+  top: 38%;
+  left: 28%;
+  width: 29px;
+  height: 14.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(20) {
+  position: absolute;
+  top: 40%;
+  left: 60%;
+  width: 21px;
+  height: 10.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(21) {
+  position: absolute;
+  top: 42%;
+  left: 17%;
+  width: 18px;
+  height: 9px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(22) {
+  position: absolute;
+  top: 44%;
+  left: 2%;
+  width: 37px;
+  height: 18.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(23) {
+  position: absolute;
+  top: 46%;
+  left: 27%;
+  width: 21px;
+  height: 10.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(24) {
+  position: absolute;
+  top: 48%;
+  left: 59%;
+  width: 14px;
+  height: 7px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(25) {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  width: 12px;
+  height: 6px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(26) {
+  position: absolute;
+  top: 52%;
+  left: 90%;
+  width: 33px;
+  height: 16.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(27) {
+  position: absolute;
+  top: 54%;
+  left: 57%;
+  width: 15px;
+  height: 7.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(28) {
+  position: absolute;
+  top: 56%;
+  left: 44%;
+  width: 26px;
+  height: 13px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(29) {
+  position: absolute;
+  top: 58%;
+  left: 2%;
+  width: 40px;
+  height: 20px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(30) {
+  position: absolute;
+  top: 60%;
+  left: 67%;
+  width: 15px;
+  height: 7.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(31) {
+  position: absolute;
+  top: 62%;
+  left: 7%;
+  width: 27px;
+  height: 13.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(32) {
+  position: absolute;
+  top: 64%;
+  left: 51%;
+  width: 30px;
+  height: 15px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(33) {
+  position: absolute;
+  top: 66%;
+  left: 81%;
+  width: 18px;
+  height: 9px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(34) {
+  position: absolute;
+  top: 68%;
+  left: 54%;
+  width: 11px;
+  height: 5.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(35) {
+  position: absolute;
+  top: 70%;
+  left: 90%;
+  width: 40px;
+  height: 20px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(36) {
+  position: absolute;
+  top: 72%;
+  left: 20%;
+  width: 12px;
+  height: 6px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(37) {
+  position: absolute;
+  top: 74%;
+  left: 72%;
+  width: 35px;
+  height: 17.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(38) {
+  position: absolute;
+  top: 76%;
+  left: 7%;
+  width: 33px;
+  height: 16.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(39) {
+  position: absolute;
+  top: 78%;
+  left: 32%;
+  width: 19px;
+  height: 9.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(40) {
+  position: absolute;
+  top: 80%;
+  left: 22%;
+  width: 15px;
+  height: 7.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(41) {
+  position: absolute;
+  top: 82%;
+  left: 16%;
+  width: 18px;
+  height: 9px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(42) {
+  position: absolute;
+  top: 84%;
+  left: 67%;
+  width: 10px;
+  height: 5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(43) {
+  position: absolute;
+  top: 86%;
+  left: 43%;
+  width: 10px;
+  height: 5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(44) {
+  position: absolute;
+  top: 88%;
+  left: 38%;
+  width: 31px;
+  height: 15.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(45) {
+  position: absolute;
+  top: 90%;
+  left: 16%;
+  width: 11px;
+  height: 5.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(46) {
+  position: absolute;
+  top: 92%;
+  left: 1%;
+  width: 30px;
+  height: 15px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(47) {
+  position: absolute;
+  top: 94%;
+  left: 10%;
+  width: 18px;
+  height: 9px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(48) {
+  position: absolute;
+  top: 96%;
+  left: 74%;
+  width: 34px;
+  height: 17px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(49) {
+  position: absolute;
+  top: 98%;
+  left: 86%;
+  width: 40px;
+  height: 20px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house2 div.brick:nth-child(50) {
+  position: absolute;
+  top: 100%;
+  left: 76%;
+  width: 23px;
+  height: 11.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(1) {
+  position: absolute;
+  top: 2%;
+  left: 5%;
+  width: 38px;
+  height: 19px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(2) {
+  position: absolute;
+  top: 4%;
+  left: 58%;
+  width: 21px;
+  height: 10.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(3) {
+  position: absolute;
+  top: 6%;
+  left: 24%;
+  width: 20px;
+  height: 10px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(4) {
+  position: absolute;
+  top: 8%;
+  left: 7%;
+  width: 17px;
+  height: 8.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(5) {
+  position: absolute;
+  top: 10%;
+  left: 79%;
+  width: 20px;
+  height: 10px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(6) {
+  position: absolute;
+  top: 12%;
+  left: 61%;
+  width: 24px;
+  height: 12px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(7) {
+  position: absolute;
+  top: 14%;
+  left: 41%;
+  width: 13px;
+  height: 6.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(8) {
+  position: absolute;
+  top: 16%;
+  left: 2%;
+  width: 25px;
+  height: 12.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(9) {
+  position: absolute;
+  top: 18%;
+  left: 35%;
+  width: 16px;
+  height: 8px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(10) {
+  position: absolute;
+  top: 20%;
+  left: 58%;
+  width: 19px;
+  height: 9.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(11) {
+  position: absolute;
+  top: 22%;
+  left: 34%;
+  width: 26px;
+  height: 13px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(12) {
+  position: absolute;
+  top: 24%;
+  left: 28%;
+  width: 17px;
+  height: 8.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(13) {
+  position: absolute;
+  top: 26%;
+  left: 32%;
+  width: 36px;
+  height: 18px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(14) {
+  position: absolute;
+  top: 28%;
+  left: 82%;
+  width: 40px;
+  height: 20px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(15) {
+  position: absolute;
+  top: 30%;
+  left: 53%;
+  width: 10px;
+  height: 5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(16) {
+  position: absolute;
+  top: 32%;
+  left: 4%;
+  width: 34px;
+  height: 17px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(17) {
+  position: absolute;
+  top: 34%;
+  left: 5%;
+  width: 26px;
+  height: 13px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(18) {
+  position: absolute;
+  top: 36%;
+  left: 0%;
+  width: 39px;
+  height: 19.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(19) {
+  position: absolute;
+  top: 38%;
+  left: 90%;
+  width: 32px;
+  height: 16px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(20) {
+  position: absolute;
+  top: 40%;
+  left: 54%;
+  width: 31px;
+  height: 15.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(21) {
+  position: absolute;
+  top: 42%;
+  left: 60%;
+  width: 26px;
+  height: 13px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(22) {
+  position: absolute;
+  top: 44%;
+  left: 18%;
+  width: 35px;
+  height: 17.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(23) {
+  position: absolute;
+  top: 46%;
+  left: 26%;
+  width: 31px;
+  height: 15.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(24) {
+  position: absolute;
+  top: 48%;
+  left: 72%;
+  width: 10px;
+  height: 5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(25) {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  width: 29px;
+  height: 14.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(26) {
+  position: absolute;
+  top: 52%;
+  left: 44%;
+  width: 16px;
+  height: 8px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(27) {
+  position: absolute;
+  top: 54%;
+  left: 37%;
+  width: 16px;
+  height: 8px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(28) {
+  position: absolute;
+  top: 56%;
+  left: 25%;
+  width: 20px;
+  height: 10px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(29) {
+  position: absolute;
+  top: 58%;
+  left: 55%;
+  width: 15px;
+  height: 7.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(30) {
+  position: absolute;
+  top: 60%;
+  left: 17%;
+  width: 38px;
+  height: 19px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(31) {
+  position: absolute;
+  top: 62%;
+  left: 80%;
+  width: 38px;
+  height: 19px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(32) {
+  position: absolute;
+  top: 64%;
+  left: 76%;
+  width: 10px;
+  height: 5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(33) {
+  position: absolute;
+  top: 66%;
+  left: 62%;
+  width: 31px;
+  height: 15.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(34) {
+  position: absolute;
+  top: 68%;
+  left: 42%;
+  width: 10px;
+  height: 5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(35) {
+  position: absolute;
+  top: 70%;
+  left: 14%;
+  width: 29px;
+  height: 14.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(36) {
+  position: absolute;
+  top: 72%;
+  left: 46%;
+  width: 25px;
+  height: 12.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(37) {
+  position: absolute;
+  top: 74%;
+  left: 88%;
+  width: 37px;
+  height: 18.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(38) {
+  position: absolute;
+  top: 76%;
+  left: 11%;
+  width: 23px;
+  height: 11.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(39) {
+  position: absolute;
+  top: 78%;
+  left: 48%;
+  width: 40px;
+  height: 20px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(40) {
+  position: absolute;
+  top: 80%;
+  left: 22%;
+  width: 21px;
+  height: 10.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(41) {
+  position: absolute;
+  top: 82%;
+  left: 29%;
+  width: 18px;
+  height: 9px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(42) {
+  position: absolute;
+  top: 84%;
+  left: 57%;
+  width: 34px;
+  height: 17px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(43) {
+  position: absolute;
+  top: 86%;
+  left: 64%;
+  width: 28px;
+  height: 14px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(44) {
+  position: absolute;
+  top: 88%;
+  left: 13%;
+  width: 25px;
+  height: 12.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(45) {
+  position: absolute;
+  top: 90%;
+  left: 22%;
+  width: 38px;
+  height: 19px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(46) {
+  position: absolute;
+  top: 92%;
+  left: 77%;
+  width: 39px;
+  height: 19.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(47) {
+  position: absolute;
+  top: 94%;
+  left: 21%;
+  width: 18px;
+  height: 9px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(48) {
+  position: absolute;
+  top: 96%;
+  left: 7%;
+  width: 20px;
+  height: 10px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(49) {
+  position: absolute;
+  top: 98%;
+  left: 74%;
+  width: 32px;
+  height: 16px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house3 div.brick:nth-child(50) {
+  position: absolute;
+  top: 100%;
+  left: 6%;
+  width: 36px;
+  height: 18px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(1) {
+  position: absolute;
+  top: 2%;
+  left: 13%;
+  width: 40px;
+  height: 20px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(2) {
+  position: absolute;
+  top: 6%;
+  left: 62%;
+  width: 26px;
+  height: 13px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(3) {
+  position: absolute;
+  top: 10%;
+  left: 13%;
+  width: 30px;
+  height: 15px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(4) {
+  position: absolute;
+  top: 14%;
+  left: 78%;
+  width: 40px;
+  height: 20px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(5) {
+  position: absolute;
+  top: 18%;
+  left: 85%;
+  width: 21px;
+  height: 10.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(6) {
+  position: absolute;
+  top: 22%;
+  left: 34%;
+  width: 25px;
+  height: 12.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(7) {
+  position: absolute;
+  top: 26%;
+  left: 75%;
+  width: 24px;
+  height: 12px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(8) {
+  position: absolute;
+  top: 30%;
+  left: 28%;
+  width: 15px;
+  height: 7.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(9) {
+  position: absolute;
+  top: 34%;
+  left: 18%;
+  width: 39px;
+  height: 19.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(10) {
+  position: absolute;
+  top: 38%;
+  left: 0%;
+  width: 20px;
+  height: 10px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(11) {
+  position: absolute;
+  top: 42%;
+  left: 73%;
+  width: 38px;
+  height: 19px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(12) {
+  position: absolute;
+  top: 46%;
+  left: 35%;
+  width: 31px;
+  height: 15.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(13) {
+  position: absolute;
+  top: 50%;
+  left: 29%;
+  width: 39px;
+  height: 19.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(14) {
+  position: absolute;
+  top: 54%;
+  left: 69%;
+  width: 21px;
+  height: 10.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(15) {
+  position: absolute;
+  top: 58%;
+  left: 73%;
+  width: 14px;
+  height: 7px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(16) {
+  position: absolute;
+  top: 62%;
+  left: 3%;
+  width: 16px;
+  height: 8px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(17) {
+  position: absolute;
+  top: 66%;
+  left: 66%;
+  width: 36px;
+  height: 18px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(18) {
+  position: absolute;
+  top: 70%;
+  left: 27%;
+  width: 22px;
+  height: 11px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(19) {
+  position: absolute;
+  top: 74%;
+  left: 26%;
+  width: 37px;
+  height: 18.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(20) {
+  position: absolute;
+  top: 78%;
+  left: 50%;
+  width: 38px;
+  height: 19px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(21) {
+  position: absolute;
+  top: 82%;
+  left: 89%;
+  width: 36px;
+  height: 18px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(22) {
+  position: absolute;
+  top: 86%;
+  left: 27%;
+  width: 16px;
+  height: 8px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(23) {
+  position: absolute;
+  top: 90%;
+  left: 22%;
+  width: 13px;
+  height: 6.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(24) {
+  position: absolute;
+  top: 94%;
+  left: 86%;
+  width: 23px;
+  height: 11.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(25) {
+  position: absolute;
+  top: 98%;
+  left: 57%;
+  width: 29px;
+  height: 14.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(26) {
+  position: absolute;
+  top: 102%;
+  left: 31%;
+  width: 12px;
+  height: 6px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(27) {
+  position: absolute;
+  top: 106%;
+  left: 43%;
+  width: 35px;
+  height: 17.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(28) {
+  position: absolute;
+  top: 110%;
+  left: 51%;
+  width: 17px;
+  height: 8.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(29) {
+  position: absolute;
+  top: 114%;
+  left: 9%;
+  width: 24px;
+  height: 12px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(30) {
+  position: absolute;
+  top: 118%;
+  left: 31%;
+  width: 19px;
+  height: 9.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(31) {
+  position: absolute;
+  top: 122%;
+  left: 16%;
+  width: 17px;
+  height: 8.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(32) {
+  position: absolute;
+  top: 126%;
+  left: 0%;
+  width: 39px;
+  height: 19.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(33) {
+  position: absolute;
+  top: 130%;
+  left: 48%;
+  width: 36px;
+  height: 18px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(34) {
+  position: absolute;
+  top: 134%;
+  left: 43%;
+  width: 38px;
+  height: 19px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house4 div.brick:nth-child(35) {
+  position: absolute;
+  top: 138%;
+  left: 89%;
+  width: 35px;
+  height: 17.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(1) {
+  position: absolute;
+  top: 2%;
+  left: 67%;
+  width: 28px;
+  height: 14px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(2) {
+  position: absolute;
+  top: 4%;
+  left: 41%;
+  width: 14px;
+  height: 7px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(3) {
+  position: absolute;
+  top: 6%;
+  left: 35%;
+  width: 26px;
+  height: 13px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(4) {
+  position: absolute;
+  top: 8%;
+  left: 53%;
+  width: 28px;
+  height: 14px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(5) {
+  position: absolute;
+  top: 10%;
+  left: 47%;
+  width: 27px;
+  height: 13.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(6) {
+  position: absolute;
+  top: 12%;
+  left: 63%;
+  width: 22px;
+  height: 11px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(7) {
+  position: absolute;
+  top: 14%;
+  left: 37%;
+  width: 19px;
+  height: 9.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(8) {
+  position: absolute;
+  top: 16%;
+  left: 79%;
+  width: 27px;
+  height: 13.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(9) {
+  position: absolute;
+  top: 18%;
+  left: 68%;
+  width: 22px;
+  height: 11px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(10) {
+  position: absolute;
+  top: 20%;
+  left: 52%;
+  width: 29px;
+  height: 14.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(11) {
+  position: absolute;
+  top: 22%;
+  left: 83%;
+  width: 15px;
+  height: 7.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(12) {
+  position: absolute;
+  top: 24%;
+  left: 57%;
+  width: 28px;
+  height: 14px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(13) {
+  position: absolute;
+  top: 26%;
+  left: 10%;
+  width: 30px;
+  height: 15px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(14) {
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  width: 22px;
+  height: 11px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(15) {
+  position: absolute;
+  top: 30%;
+  left: 34%;
+  width: 28px;
+  height: 14px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(16) {
+  position: absolute;
+  top: 32%;
+  left: 81%;
+  width: 37px;
+  height: 18.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(17) {
+  position: absolute;
+  top: 34%;
+  left: 53%;
+  width: 26px;
+  height: 13px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(18) {
+  position: absolute;
+  top: 36%;
+  left: 78%;
+  width: 26px;
+  height: 13px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(19) {
+  position: absolute;
+  top: 38%;
+  left: 48%;
+  width: 22px;
+  height: 11px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(20) {
+  position: absolute;
+  top: 40%;
+  left: 16%;
+  width: 15px;
+  height: 7.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(21) {
+  position: absolute;
+  top: 42%;
+  left: 4%;
+  width: 38px;
+  height: 19px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(22) {
+  position: absolute;
+  top: 44%;
+  left: 28%;
+  width: 30px;
+  height: 15px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(23) {
+  position: absolute;
+  top: 46%;
+  left: 21%;
+  width: 17px;
+  height: 8.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(24) {
+  position: absolute;
+  top: 48%;
+  left: 26%;
+  width: 23px;
+  height: 11.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(25) {
+  position: absolute;
+  top: 50%;
+  left: 13%;
+  width: 31px;
+  height: 15.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(26) {
+  position: absolute;
+  top: 52%;
+  left: 60%;
+  width: 29px;
+  height: 14.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(27) {
+  position: absolute;
+  top: 54%;
+  left: 88%;
+  width: 31px;
+  height: 15.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(28) {
+  position: absolute;
+  top: 56%;
+  left: 64%;
+  width: 27px;
+  height: 13.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(29) {
+  position: absolute;
+  top: 58%;
+  left: 8%;
+  width: 10px;
+  height: 5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(30) {
+  position: absolute;
+  top: 60%;
+  left: 46%;
+  width: 11px;
+  height: 5.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(31) {
+  position: absolute;
+  top: 62%;
+  left: 10%;
+  width: 24px;
+  height: 12px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(32) {
+  position: absolute;
+  top: 64%;
+  left: 59%;
+  width: 12px;
+  height: 6px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(33) {
+  position: absolute;
+  top: 66%;
+  left: 40%;
+  width: 31px;
+  height: 15.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(34) {
+  position: absolute;
+  top: 68%;
+  left: 31%;
+  width: 23px;
+  height: 11.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(35) {
+  position: absolute;
+  top: 70%;
+  left: 37%;
+  width: 36px;
+  height: 18px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(36) {
+  position: absolute;
+  top: 72%;
+  left: 1%;
+  width: 38px;
+  height: 19px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(37) {
+  position: absolute;
+  top: 74%;
+  left: 71%;
+  width: 25px;
+  height: 12.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(38) {
+  position: absolute;
+  top: 76%;
+  left: 4%;
+  width: 36px;
+  height: 18px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(39) {
+  position: absolute;
+  top: 78%;
+  left: 56%;
+  width: 23px;
+  height: 11.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(40) {
+  position: absolute;
+  top: 80%;
+  left: 52%;
+  width: 29px;
+  height: 14.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(41) {
+  position: absolute;
+  top: 82%;
+  left: 56%;
+  width: 34px;
+  height: 17px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(42) {
+  position: absolute;
+  top: 84%;
+  left: 47%;
+  width: 31px;
+  height: 15.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(43) {
+  position: absolute;
+  top: 86%;
+  left: 71%;
+  width: 17px;
+  height: 8.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(44) {
+  position: absolute;
+  top: 88%;
+  left: 54%;
+  width: 32px;
+  height: 16px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(45) {
+  position: absolute;
+  top: 90%;
+  left: 30%;
+  width: 35px;
+  height: 17.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(46) {
+  position: absolute;
+  top: 92%;
+  left: 88%;
+  width: 31px;
+  height: 15.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(47) {
+  position: absolute;
+  top: 94%;
+  left: 40%;
+  width: 33px;
+  height: 16.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(48) {
+  position: absolute;
+  top: 96%;
+  left: 52%;
+  width: 23px;
+  height: 11.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(49) {
+  position: absolute;
+  top: 98%;
+  left: 90%;
+  width: 29px;
+  height: 14.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(50) {
+  position: absolute;
+  top: 100%;
+  left: 68%;
+  width: 25px;
+  height: 12.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(51) {
+  position: absolute;
+  top: 102%;
+  left: 57%;
+  width: 34px;
+  height: 17px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(52) {
+  position: absolute;
+  top: 104%;
+  left: 51%;
+  width: 17px;
+  height: 8.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(53) {
+  position: absolute;
+  top: 106%;
+  left: 29%;
+  width: 39px;
+  height: 19.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(54) {
+  position: absolute;
+  top: 108%;
+  left: 6%;
+  width: 21px;
+  height: 10.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(55) {
+  position: absolute;
+  top: 110%;
+  left: 57%;
+  width: 32px;
+  height: 16px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(56) {
+  position: absolute;
+  top: 112%;
+  left: 50%;
+  width: 23px;
+  height: 11.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(57) {
+  position: absolute;
+  top: 114%;
+  left: 29%;
+  width: 39px;
+  height: 19.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(58) {
+  position: absolute;
+  top: 116%;
+  left: 52%;
+  width: 40px;
+  height: 20px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(59) {
+  position: absolute;
+  top: 118%;
+  left: 64%;
+  width: 39px;
+  height: 19.5px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(60) {
+  position: absolute;
+  top: 120%;
+  left: 66%;
+  width: 37px;
+  height: 18.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(61) {
+  position: absolute;
+  top: 122%;
+  left: 4%;
+  width: 25px;
+  height: 12.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(62) {
+  position: absolute;
+  top: 124%;
+  left: 74%;
+  width: 36px;
+  height: 18px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(63) {
+  position: absolute;
+  top: 126%;
+  left: 56%;
+  width: 15px;
+  height: 7.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(64) {
+  position: absolute;
+  top: 128%;
+  left: 59%;
+  width: 38px;
+  height: 19px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(65) {
+  position: absolute;
+  top: 130%;
+  left: 15%;
+  width: 22px;
+  height: 11px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(66) {
+  position: absolute;
+  top: 132%;
+  left: 2%;
+  width: 35px;
+  height: 17.5px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(67) {
+  position: absolute;
+  top: 134%;
+  left: 59%;
+  width: 12px;
+  height: 6px;
+  border-radius: 10%;
+  background-color: #959595;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(68) {
+  position: absolute;
+  top: 136%;
+  left: 57%;
+  width: 36px;
+  height: 18px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(69) {
+  position: absolute;
+  top: 138%;
+  left: 29%;
+  width: 30px;
+  height: 15px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.house5 div.brick:nth-child(70) {
+  position: absolute;
+  top: 140%;
+  left: 15%;
+  width: 20px;
+  height: 10px;
+  border-radius: 10%;
+  background-color: #7d7d7d;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+/* ----------------------------------------------- */
+/*                   Keyframes                     */
+/* ----------------------------------------------- */
+@-webkit-keyframes bounce_smoke {
+  10% {
+    opacity: 0;
+    width: 50px;
+    height: 50px;
+  }
+  30% {
+    opacity: 1;
+    width: 70px;
+    height: 60px;
+  }
+  50% {
+    opacity: 0;
+    width: 50px;
+    height: 50px;
+  }
+  100% {
+    opacity: 0;
+    width: 50px;
+    height: 50px;
+  }
+}
+@keyframes bounce_smoke {
+  10% {
+    opacity: 0;
+    width: 50px;
+    height: 50px;
+  }
+  30% {
+    opacity: 1;
+    width: 70px;
+    height: 60px;
+  }
+  50% {
+    opacity: 0;
+    width: 50px;
+    height: 50px;
+  }
+  100% {
+    opacity: 0;
+    width: 50px;
+    height: 50px;
+  }
+}
+@-webkit-keyframes move_cloud {
+  0% {
+    opacity: 0;
+    left: -440px;
+  }
+  50% {
+    opacity: 1;
+    left: 580px;
+  }
+  100% {
+    opacity: 0;
+    left: 1440px;
+  }
+}
+@keyframes move_cloud {
+  0% {
+    opacity: 0;
+    left: -440px;
+  }
+  50% {
+    opacity: 1;
+    left: 580px;
+  }
+  100% {
+    opacity: 0;
+    left: 1440px;
+  }
+}
+/* ----------------------------------------------- */
+/* ----------------------------------------------- */
+/* ----------------------------------------------- */
+/*                   Functions                     */
+/* ----------------------------------------------- */
+/* ----------------------------------------------- */
+/* ----------------------------------------------- */
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <html>
   <head>
-    <title>Floating Island</title>
-    <link rel="stylesheet" href="style.css">
-    <script>
-      /* --- JS only for not writting a lot of the same things --- */
-
-      document.body.onload = addBricks("wall_1", 15);
-      document.body.onload = addBricks("wall_2", 50);
-      document.body.onload = addBricks("wall_3", 50);
-      document.body.onload = addBricks("wall_4", 35);
-      document.body.onload = addBricks("wall_5", 70);
-
-      function addBricks(wall_id, size) { 
-        for (var i = 0; i < size; i++) {
-          var newNode = document.createElement('div');
-          newNode.className = 'brick';
-          newNode.innerHTML = '';
-          document.getElementById(wall_id).appendChild(newNode);   
-        }
-      }
-    </script>
-    <script>
-      window.console = window.console || function(t) {};
-    </script>
-    
-      
-      
-      <script>
-      if (document.location.search.match(/type=embed/gi)) {
-        window.parent.postMessage("resize", "*");
-      }
-    </script>
-    
   </head>
   <body>
     <div class="wrapper">
@@ -200,4 +3983,33 @@
       </div>
     </div>
   </body>
+</html>
+    <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+
+  
+      <script id="rendered-js" >
+      /* --- JS only for not writting a lot of the same things --- */
+
+document.body.onload = addBricks("wall_1", 15);
+document.body.onload = addBricks("wall_2", 50);
+document.body.onload = addBricks("wall_3", 50);
+document.body.onload = addBricks("wall_4", 35);
+document.body.onload = addBricks("wall_5", 70);
+
+function addBricks(wall_id, size) {
+  for (var i = 0; i < size; i++) {if (window.CP.shouldStopExecution(0)) break;
+    var newNode = document.createElement('div');
+    newNode.className = 'brick';
+    newNode.innerHTML = '';
+    document.getElementById(wall_id).appendChild(newNode);
+  }window.CP.exitedLoop(0);
+}
+      //# sourceURL=pen.js
+    </script>
+
+  
+  
+
+</body>
+
 </html>
