@@ -21,5 +21,6 @@ Code Library for Community
 - [Click Button Copy To Clipboard](ClickButtonCopyToClipboard.html)
 - [Button Float](ButtonFloatHTML.html)
 - [Animated 3D CUBE](Animated-3D-CUBE.html)
+- [T-Rex Running Game](T-Rex-Running.html)
 
 # Thanks for follow!
