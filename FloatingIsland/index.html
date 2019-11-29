@@ -1,0 +1,191 @@
+<html>
+  <head>
+    <title>Floating Island</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+      /* --- JS only for not writting a lot of the same things --- */
+
+      document.body.onload = addBricks("wall_1", 15);
+      document.body.onload = addBricks("wall_2", 50);
+      document.body.onload = addBricks("wall_3", 50);
+      document.body.onload = addBricks("wall_4", 35);
+      document.body.onload = addBricks("wall_5", 70);
+
+      function addBricks(wall_id, size) { 
+        for (var i = 0; i < size; i++) {
+          var newNode = document.createElement('div');
+          newNode.className = 'brick';
+          newNode.innerHTML = '';
+          document.getElementById(wall_id).appendChild(newNode);   
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="scale">
+        <div class="cloud1"></div>
+        <div class="cloud2"></div>
+        <div class="cloud3"></div>
+        <div class="house-wrapper">
+          <div class="house1" id="wall_1"></div>
+          <div class="house2" id="wall_2"></div>
+          <div class="house3" id="wall_3"></div>
+          <div class="house4" id="wall_4"></div>
+          <div class="chimney">
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+          </div>
+          <div class="house5" id="wall_5"></div>
+          <div class="wood1">
+            <div class="wood-lane-1">
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+            </div>
+            <div class="wood-lane-2">
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+            </div>
+            <div class="wood-lane-3">
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+            </div>
+            <div class="wood-lane-4">
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+            </div>
+          </div>
+          <div class="wood2">
+            <div class="wood-lane-1">
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+            </div>
+            <div class="wood-lane-2">
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+            </div>
+            <div class="wood-lane-3">
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+            </div>
+            <div class="wood-lane-4">
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+            </div>
+          </div>
+          <div class="wood3">
+            <div class="wood-lane-1">
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+            </div>
+            <div class="wood-lane-2">
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+            </div>
+            <div class="wood-lane-3">
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+            </div>
+            <div class="wood-lane-4">
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+              <div class="wood"></div>
+            </div></div>
+          <div class="window1"></div>
+          <div class="window2">
+            <span></span>
+          </div>
+          <div class="window3">
+            <span></span>
+          </div>
+          <div class="window4">
+            <span></span>
+            <span></span>
+          </div>
+          <div class="window5">
+            <span></span>
+            <span></span>
+          </div>
+          <div class="window6">
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="tree first">
+          <div class="leaves1"></div>
+          <div class="leaves2"></div>
+          <div class="leaves3"></div>
+          <div class="leaves4"></div>
+          <div class="trunk"></div>
+        </div>      
+        <div class="tree second">
+          <div class="leaves1"></div>
+          <div class="leaves2"></div>
+          <div class="leaves3"></div>
+          <div class="leaves4"></div>
+          <div class="trunk"></div>
+        </div>  
+        <div class="tree third">
+          <div class="leaves1"></div>
+          <div class="leaves2"></div>
+          <div class="leaves3"></div>
+          <div class="leaves4"></div>
+          <div class="trunk"></div>
+        </div>      
+        <div class="tree four">
+          <div class="leaves1"></div>
+          <div class="leaves2"></div>
+          <div class="leaves3"></div>
+          <div class="leaves4"></div>
+          <div class="trunk"></div>
+        </div>
+        <div class="grass-ground"></div>
+        <div class="inter-dirt-ground"></div>
+        <div class="dirt-ground">
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
