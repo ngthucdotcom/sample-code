@@ -24,6 +24,7 @@ Code Library for Community
 - [Phone Ring Ring](PhoneRingRing.html)
 - [Click Button Copy To Clipboard](ClickButtonCopyToClipboard.html)
 - [Button Float](ButtonFloatHTML.html)
+- [Phone Ring Floating](PhoneRingFloating)
 - [Animated 3D CUBE](Animated-3D-CUBE)
 - [T-Rex Running Game](T-RexRunning)
 - [Floating Island](FloatingIsland)
