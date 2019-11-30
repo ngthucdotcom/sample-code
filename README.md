@@ -19,7 +19,7 @@ Code Library for Community
 * [Visual Studio Code](https://code.visualstudio.com/)
 
 ## Demo
-- [City Landing Page](CityLandingPage)
+- [City Landing Page](../CityLandingPage)
 - [Blob Saving](blob-saving.js)
 - [Phone Ring Ring](PhoneRingRing.html)
 - [Click Button Copy To Clipboard](ClickButtonCopyToClipboard.html)
