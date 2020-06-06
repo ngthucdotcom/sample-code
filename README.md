@@ -16,7 +16,8 @@ Code Library for Community
 * Regex: (02+([0-9]{9})\b)
 
 ## Source
-[Wikipedia Vietnamese: Mã điện thoại Việt Nam](https://vi.wikipedia.org/wiki/M%C3%A3_%C4%91i%E1%BB%87n_tho%E1%BA%A1i_Vi%E1%BB%87t_Nam)
+* [Wikipedia Vietnamese: Mã điện thoại Việt Nam](https://vi.wikipedia.org/wiki/M%C3%A3_%C4%91i%E1%BB%87n_tho%E1%BA%A1i_Vi%E1%BB%87t_Nam)
+* [Check regex](https://regexr.com/)
 
 ## Technology
 * [HTML](https://www.w3schools.com/html/)
