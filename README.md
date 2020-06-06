@@ -3,7 +3,7 @@ Code Library for Community
 
 # Vietnam Phone Regular Expression Pattern
 ## Full Regex Pattern
-/((032|033|034|035|036|037|038|039|052|055|056|058|059|070|076|077|078|079)+([0-9]{7})\b)|(08+([1-9]{8})\b)|(09+([0-4|6-9]{8})\b)|(02+([0-9]{9})\b)/g
+((032|033|034|035|036|037|038|039|052|055|056|058|059|070|076|077|078|079)+([0-9]{7})\b)|(08+([1-9]{8})\b)|(09+([0-4|6-9]{8})\b)|(02+([0-9]{9})\b)
 
 ## Description
 ### Group 1: Mobile phone of Viettel/Vietnamobile/Reddi/Gmobile/MobiFone in Vietnam
