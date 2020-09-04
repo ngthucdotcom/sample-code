@@ -1,24 +1,6 @@
 # SampleCode
 Code Library for Community
 
-# Vietnam Phone Regular Expression Pattern
-## Full Regex Pattern
-((032|033|034|035|036|037|038|039|052|055|056|058|059|070|076|077|078|079)+([0-9]{7})\b)|(08+([1-9]{8})\b)|(09+([0-4|6-9]{8})\b)|(02+([0-9]{9})\b)
-
-## Description
-### Group 1: Mobile phone of Viettel/Vietnamobile/Reddi/Gmobile/MobiFone in Vietnam
-* Regex: ((032|033|034|035|036|037|038|039|052|055|056|058|059|070|076|077|078|079)+([0-9]{7})\b)
-### Group 2: Mobile phone of Vinaphone/Viettel/MobiFone/Itelecom in Vietnam
-* Regex: (08+([1-9]{8})\b)
-### Group 3: Mobile phone of MobiFone/Vinaphone/Viettel/Gmobile in Vietnam
-* Regex: (09+([0-4|6-9]{8})\b)
-### Group 4: Telephone in Vietnam
-* Regex: (02+([0-9]{9})\b)
-
-## Source
-* [Wikipedia Vietnamese: Mã điện thoại Việt Nam](https://vi.wikipedia.org/wiki/M%C3%A3_%C4%91i%E1%BB%87n_tho%E1%BA%A1i_Vi%E1%BB%87t_Nam)
-* [Check regex](https://regexr.com/)
-
 # Sample code source & description
 ## Technology
 * [HTML](https://www.w3schools.com/html/)
