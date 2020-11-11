@@ -19,6 +19,12 @@ Code Library for Community
 * [Notepad++](https://notepad-plus-plus.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
 
+## Shell scripts
+* Git author history
+```shell
+git shortlog -sn --no-merges
+```
+
 ## Demo
 - [City Landing Page](../city-landing-page)
 - [Blob Saving](blob-saving.js)
