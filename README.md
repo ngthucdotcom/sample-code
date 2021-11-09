@@ -39,5 +39,6 @@ git shortlog -sn --no-merges
 - [Multilevel Accordion Menu](MultilevelAccordionMenu)
 - [Multi-level Dropdown Menu](MultiLevelMenu)
 - [Button of Datatables](ButtonDatatables)
+- [Viet Nam EID Extract](https://ngthucdotcom.github.io/sample-code/VietNamEID/viet-nam-eid-extract.js)
 
 # Thanks for follow!
