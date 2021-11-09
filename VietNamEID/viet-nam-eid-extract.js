@@ -9,15 +9,15 @@ const handler = (data = {}) => {
     data.split(/\|/g).map(item => {
         // length of item less or equal than 12 and is number (parse to int and great than 0)
         if (item.length <= 12 && parseInt(item) > 0) {
-            if (item.length === 12) {
+            if (item.length === 12) { // new VN-ID (as 'CCCD' or 'CMND 12 numbers') have 12 numbers
                 result = buildResult({id: item});
             }
 
-            if (item.length === 9) {
+            if (item.length === 9) { // old VN-ID (as 'CMND 9 numbers') have 9 numbers, not require because citizen maybe there was new VN-ID with barcode form factor before
                 result = buildResult({oid: item});
             }
 
-            if (item.length === 8) {
+            if (item.length === 8) { // DoB and issueDate have 8 numbers, format DDMMYYYY
                 const day = item.substring(0, 2);
                 const month = item.substring(2, 4);
                 const year = parseInt(item.substring(4, 8));
@@ -32,7 +32,7 @@ const handler = (data = {}) => {
             result = buildResult({gender: item});
         }
 
-        if (!result.fullName) {
+        if (!result.fullName) { // fullName always before address or sometimes address not available
             result = buildResult({fullName: item});
         }
 
