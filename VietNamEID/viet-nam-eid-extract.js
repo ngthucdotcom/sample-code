@@ -47,4 +47,15 @@ const handler = (data = {}) => {
 
 // usage
 const eid = '079090001001|020123456|Nguyễn Văn A|01011990|Nam|1 Lê Duẫn, Bến Nghé, Quận 1, Thành phố Hồ Chí Minh|01012021';
-handle()
+handle();
+
+// result
+{
+    "id": "079090001001",
+    "oid": "020123456",
+    "fullName": "Nguyễn Văn A",
+    "dob": "01-01-1990",
+    "gender": "Nam",
+    "address": "1 Lê Duẫn, Bến Nghé, Quận 1, Thành phố Hồ Chí Minh",
+    "issueDate": "01-01-2021"
+}
