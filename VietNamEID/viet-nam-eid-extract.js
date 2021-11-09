@@ -47,7 +47,7 @@ const handler = (data = {}) => {
 
 // usage
 const eid = '079090001001|020123456|Nguyễn Văn A|01011990|Nam|1 Lê Duẫn, Bến Nghé, Quận 1, Thành phố Hồ Chí Minh|01012021';
-handle(eid);
+handler(eid);
 
 // result
 {
