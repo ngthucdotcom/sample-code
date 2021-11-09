@@ -21,7 +21,7 @@ const handler = (data = {}) => {
                 const day = item.substring(0, 2);
                 const month = item.substring(2, 4);
                 const year = parseInt(item.substring(4, 8));
-                const fullDate: string = `${day}-${month}-${year}`;
+                const fullDate = `${day}-${month}-${year}`;
                 const dateObj = !result.dob ? {dob: fullDate} : {issueDate: fullDate}; // dob always before issueDate
                 result = buildResult(dateObj);
             }
