@@ -12,12 +12,16 @@ Code Library for Community
 * [Bootstrap](https://www.w3schools.com/bootstrap/)
 * [AJAX](https://www.w3schools.com/js/js_ajax_intro.asp)
 * [Jquery](https://www.w3schools.com/jquery/)
+
+## Tools
 * [Minify](http://minifycode.com/)
+* [Image Placeholder](https://placeholder.com/)
 
 ## Text Editor
 * [Atom](https://atom.io/)
 * [Notepad++](https://notepad-plus-plus.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
+* [WebStorm](https://www.jetbrains.com/webstorm/)
 
 ## Shell scripts
 * Git author history
