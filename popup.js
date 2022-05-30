@@ -1,3 +1,4 @@
+// @usage: inject 'https://ngthucdotcom.github.io/sample-code/popup.js' to script tag
 function handleEmptyConfigValue(value, defaultValue) {
 	if (!value || value === '') {
 		return defaultValue;
